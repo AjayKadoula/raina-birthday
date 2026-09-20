@@ -113,14 +113,16 @@ export function Quiz({ onVerified }: Props) {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + i * 0.07 }}
-                    className={`min-h-[52px] rounded-xl border px-5 py-3.5 text-left font-sans text-[0.95rem] transition-all duration-300 ${
+                    className={`flex min-h-[52px] items-start gap-3 rounded-xl border px-4 py-3.5 text-left font-sans text-[0.95rem] leading-snug transition-all duration-300 ${
                       locked && i === q.answer
                         ? 'border-gold bg-gold/15 text-gold'
                         : 'border-ivory/15 bg-ivory/[0.03] text-ivory/90 hover:border-gold/60 hover:bg-ivory/[0.06]'
                     } disabled:cursor-default`}
                   >
-                    <span className="mr-3 font-serif text-gold/70">{String.fromCharCode(65 + i)}.</span>
-                    {opt}
+                    <span className="w-5 shrink-0 font-serif text-gold/70" aria-hidden>
+                      {String.fromCharCode(65 + i)}.
+                    </span>
+                    <span className="min-w-0 flex-1">{opt}</span>
                   </motion.button>
                 ))}
               </div>
