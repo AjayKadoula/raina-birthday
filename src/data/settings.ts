@@ -52,6 +52,28 @@ export const settings = {
     showLockedTimes: true,
   },
 
+  /**
+   * Floating balloons she can pop (wish screen, gifts, the end). Each pop plays
+   * a voice clip from `voices` if any exist; otherwise the phone's own voice
+   * says the next phrase. Record the clips — her hearing YOU is the point.
+   */
+  balloons: {
+    enabled: true,
+    count: 7,
+    /** `text` floats up on screen; `say` is what the voice reads (Hindi script so डुग्गू is pronounced right). */
+    phrases: [ // ✎
+      { text: 'Love you', say: 'लव यू' },
+      { text: 'Dugguu', say: 'डुग्गू' },
+      { text: 'Love you, Dugguu', say: 'लव यू डुग्गू' },
+      { text: 'Happy birthday, Duggu', say: 'हैप्पी बर्थडे डुग्गू' },
+    ],
+    /** e.g. ['/assets/audio/voice/love-you.mp3', '/assets/audio/voice/dugguu.mp3'] */
+    voices: [] as string[], // ✎
+    speakFallback: true,
+    /** Spoken-voice character: pitch 2.0 = small child, 1.0 = adult; rate 1.0 = normal. */
+    voice: { pitch: 1.9, rate: 1.05, preferFemale: true }, // ✎
+  },
+
   /** Subtle ambient effects. Turn any off if the phone struggles. */
   effects: {
     particles: true,

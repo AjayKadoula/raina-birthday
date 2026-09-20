@@ -6,6 +6,7 @@ import { useBirthdayProgress, type Stage } from '../hooks/useBirthdayProgress'
 import { useMusic } from '../hooks/useMusic'
 import { birthdayPhase, msUntilBirthday } from '../utils/date'
 import { Countdown } from '../components/Countdown/Countdown'
+import { Balloons } from '../components/Effects/Balloons'
 import { CursorGlow } from '../components/Effects/CursorGlow'
 import { Particles } from '../components/Effects/Particles'
 import { GiftCalendar, useUnlockedGifts } from '../components/GiftReveal/GiftCalendar'
@@ -123,6 +124,7 @@ function End({
   return (
     <Chapter tone="charcoal">
       {settings.effects.particles && <Particles kind="both" density={0.7} />}
+      <Balloons />
       <div className="relative z-10 flex w-full max-w-md flex-col items-center gap-8 text-center">
         <Reveal>
           <span className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/50 text-gold">

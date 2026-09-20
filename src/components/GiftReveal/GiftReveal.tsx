@@ -4,6 +4,7 @@ import { Gift as GiftIcon } from 'lucide-react'
 import { giftScreen } from '../../data/birthday'
 import { settings } from '../../data/settings'
 import { giftBurst } from '../Effects/confetti'
+import { Balloons } from '../Effects/Balloons'
 import { Particles } from '../Effects/Particles'
 import { Chapter } from '../ui/Chapter'
 import { LineSequence } from '../ui/LineSequence'
@@ -33,6 +34,7 @@ export function GiftReveal({ onNext, seen, onSeen }: Props) {
   return (
     <Chapter tone="dark">
       {settings.effects.particles && <Particles kind="stars" density={0.5} />}
+      {phase === 'revealed' && <Balloons count={5} />}
       <div className="relative z-10 flex w-full max-w-lg flex-col items-center text-center">
         <AnimatePresence mode="wait">
           {phase === 'lines' && (

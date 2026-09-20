@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import { wish } from '../../data/birthday'
 import { settings } from '../../data/settings'
 import { celebrate, giftBurst } from '../Effects/confetti'
+import { Balloons } from '../Effects/Balloons'
 import { Particles } from '../Effects/Particles'
 import { Chapter } from '../ui/Chapter'
 import { Reveal } from '../ui/Reveal'
@@ -42,6 +43,7 @@ export function BirthdayWish({ onNext }: Props) {
   return (
     <Chapter tone="wine">
       {settings.effects.particles && <Particles kind="both" density={0.6} />}
+      <Balloons />
       <div className="relative z-10 flex w-full max-w-lg flex-col items-center gap-8 text-center">
         <Reveal>
           <p className="eyebrow">{wish.eyebrow}</p>
