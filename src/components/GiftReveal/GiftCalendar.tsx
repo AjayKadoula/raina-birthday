@@ -50,6 +50,7 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
   }, [selected, onSeen])
 
   const nextLocked = gifts.find((g) => !unlocked.has(g.id))
+  const lockedCount = gifts.length - unlocked.size
 
   return (
     <div className="flex w-full flex-col items-center gap-6">
@@ -69,7 +70,7 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
               <p className="mt-3 font-serif text-title text-ink">Not yet.</p>
               {nextLocked && (
                 <p className="mt-2 font-sans text-sm text-ink/60">
-                  The first one opens {formatIst(nextLocked.unlockAt)}.
+                  {settings.gifts.showLockedTeasers ? `The first one opens ${formatIst(nextLocked.unlockAt)}.` : 'It opens on its own. Come back.'}
                 </p>
               )}
             </div>
@@ -80,13 +81,18 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
       <section className="w-full max-w-md" aria-label={giftScreen.calendarTitle}>
         <div className="mb-3 flex items-baseline justify-between">
           <h3 className="eyebrow">{giftScreen.calendarTitle}</h3>
-          <span className="font-sans text-[0.65rem] tracking-[0.15em] text-ivory/40">
-            {unlocked.size} / {gifts.length}
-          </span>
+          {settings.gifts.showLockedTeasers && (
+            <span className="font-sans text-[0.65rem] tracking-[0.15em] text-ivory/40">
+              {unlocked.size} / {gifts.length}
+            </span>
+          )}
         </div>
-        <ol className="divide-y divide-ivory/10 rounded-2xl border border-ivory/10 bg-ink/40 backdrop-blur-sm">
+        <ol className={`divide-y divide-ivory/10 rounded-2xl border-ivory/10 bg-ink/40 backdrop-blur-sm ${
+          unlocked.size > 0 || settings.gifts.showLockedTeasers ? 'border' : ''
+        }`}>
           {gifts.map((g, i) => {
             const open = unlocked.has(g.id)
+            if (!open && !settings.gifts.showLockedTeasers) return null
             const isNew = open && !seen.includes(g.id)
             const active = selected?.id === g.id
             return (
@@ -127,7 +133,14 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
             )
           })}
         </ol>
-        <p className="mt-3 text-center font-hand text-lg text-gold/60">{giftScreen.calendarNote}</p>
+        {lockedCount > 0 && (
+          <p className="mt-3 text-center font-sans text-sm text-ivory/50">
+            {settings.gifts.showLockedTeasers
+              ? `${lockedCount} more ${lockedCount === 1 ? 'is' : 'are'} still sealed.`
+              : 'There is more. It stays sealed for now.'}
+          </p>
+        )}
+        <p className="mt-2 text-center font-hand text-lg text-gold/60">{giftScreen.calendarNote}</p>
       </section>
     </div>
   )

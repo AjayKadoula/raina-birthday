@@ -38,6 +38,14 @@ export const settings = {
     fallbackMelody: true,
   },
 
+  gifts: {
+    /**
+     * false → locked gifts are completely hidden (only "N more are still
+     * sealed"). true → locked rows show their day, teaser and unlock time.
+     */
+    showLockedTeasers: false,
+  },
+
   /** Subtle ambient effects. Turn any off if the phone struggles. */
   effects: {
     particles: true,
