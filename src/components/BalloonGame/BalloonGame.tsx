@@ -51,46 +51,40 @@ export function BalloonGame({ onNext }: Props) {
           </Reveal>
         </div>
 
-        <div className="flex flex-col items-center gap-5">
-          <AnimatePresence mode="wait">
-            {!done ? (
-              <motion.div key="score" exit={{ opacity: 0 }} className="flex flex-col items-center gap-2">
-                <span className="font-serif text-[clamp(2.4rem,9vw,4rem)] leading-none tabular-nums text-gold" aria-live="polite">
-                  {balloonRound.progress(popped, goal)}
-                </span>
-                <span className="font-sans text-[0.65rem] uppercase tracking-[0.3em] text-ivory/45">popped</span>
-                {lastWord && (
-                  <motion.span key={lastWord + popped} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="mt-1 font-hand text-2xl text-ivory/80">
-                    “{lastWord}”
-                  </motion.span>
-                )}
-              </motion.div>
-            ) : (
-              <motion.div key="done" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="pointer-events-auto flex flex-col items-center gap-6">
-                <div>
-                  {balloonRound.done.map((l, i) => (
-                    <motion.p
-                      key={l}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.3 + i * 0.7 }}
-                      className={i === 0 ? 'font-serif text-display leading-none text-ivory' : 'mt-2 font-serif text-xl italic text-gold'}
-                    >
-                      {l}
-                    </motion.p>
-                  ))}
-                </div>
-                <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }} type="button" onClick={onNext} className="btn-primary">
-                  {balloonRound.button} <ArrowRight size={18} />
-                </motion.button>
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.2 }} className="font-sans text-xs tracking-[0.2em] text-ivory/45">
-                  {balloonRound.keepGoing.toUpperCase()} · {popped} POPPED
+        <div className="flex flex-col items-center gap-4">
+          {/* Counter always stays; after the goal it just keeps counting. */}
+          <div className="flex flex-col items-center gap-1">
+            <span className="font-serif text-[clamp(2.4rem,9vw,4rem)] leading-none tabular-nums text-gold" aria-live="polite">
+              {done ? popped : balloonRound.progress(popped, goal)}
+            </span>
+            <span className="font-sans text-[0.65rem] uppercase tracking-[0.3em] text-ivory/45">popped</span>
+            {lastWord && (
+              <motion.span key={lastWord + popped} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="mt-1 font-hand text-2xl text-ivory/80">
+                “{lastWord}”
+              </motion.span>
+            )}
+          </div>
+
+          <AnimatePresence>
+            {done && (
+              <motion.div
+                key="done"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="pointer-events-auto flex flex-col items-center gap-3"
+              >
+                <motion.p
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: [0, 1, 1, 0.7], scale: [0.9, 1.05, 1, 1] }}
+                  transition={{ duration: 3, times: [0, 0.15, 0.8, 1] }}
+                  className="font-serif text-title italic text-gold"
+                >
+                  {balloonRound.done[1]}
                 </motion.p>
-                {lastWord && (
-                  <motion.span key={lastWord + popped} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="font-hand text-2xl text-ivory/80">
-                    “{lastWord}”
-                  </motion.span>
-                )}
+                <button type="button" onClick={onNext} className="btn-primary">
+                  {balloonRound.button} <ArrowRight size={18} />
+                </button>
+                <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-ivory/45">{balloonRound.keepGoing}</p>
               </motion.div>
             )}
           </AnimatePresence>
