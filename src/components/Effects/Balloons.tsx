@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { settings } from '../../data/settings'
 import { asset } from '../../utils/assets'
 
@@ -19,6 +19,11 @@ type Burst = { id: number; x: number; y: number; word: string }
 const COLOURS = ['rgb(var(--c-wine))', 'rgb(var(--c-rose))', 'rgb(var(--c-gold))', 'rgb(var(--c-cream))']
 
 let seq = 0
+
+/** Same rule as the clip generator: lower-case, runs of non-alphanumerics → '-'. */
+export function clipSlug(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'clip'
+}
 function make(i: number, glowEvery = 3): Balloon {
   return {
     id: ++seq,
@@ -46,8 +51,8 @@ function popSound(ctx: AudioContext) {
   flt.frequency.value = 900
   flt.Q.value = 0.8
   const g = ctx.createGain()
-  g.gain.setValueAtTime(0.5, t)
-  g.gain.exponentialRampToValueAtTime(0.001, t + 0.12)
+  g.gain.setValueAtTime(0.22, t)
+  g.gain.exponentialRampToValueAtTime(0.001, t + 0.1)
   src.connect(flt)
   flt.connect(g)
   g.connect(ctx.destination)
@@ -66,22 +71,23 @@ export function Balloons({ count = settings.balloons.count, className = '', onPo
   const [balloons, setBalloons] = useState<Balloon[]>(() => Array.from({ length: count }, (_, i) => make(i)))
   const [bursts, setBursts] = useState<Burst[]>([])
   const ctxRef = useRef<AudioContext | null>(null)
-  const voices = useMemo(() => settings.balloons.voices.map((v) => new Audio(asset(v))), [])
+  const clips = useRef(new Map<string, HTMLAudioElement>())
   const wordIdx = useRef(0)
 
-  const say = useCallback(
-    (word: string) => {
-      const clip = voices.length ? voices[Math.floor(Math.random() * voices.length)] : null
-      if (clip) {
-        clip.currentTime = 0
-        clip.volume = 0.9
-        void clip.play().catch(() => speak(word))
-      } else {
-        speak(word)
-      }
-    },
-    [voices],
-  )
+  /** Play the phrase's own clip; if it is missing, fall back to the phone's voice. */
+  const say = useCallback((text: string, spoken: string) => {
+    if (!settings.balloons.voiceClips) return speak(spoken)
+    const key = clipSlug(text)
+    let el = clips.current.get(key)
+    if (!el) {
+      el = new Audio(asset(`/assets/audio/voice/${key}.mp3`))
+      el.preload = 'auto'
+      clips.current.set(key, el)
+    }
+    el.currentTime = 0
+    el.volume = 1
+    void el.play().catch(() => speak(spoken))
+  }, [])
 
   const pop = useCallback(
     (b: Balloon, clientX: number, clientY: number) => {
@@ -93,7 +99,7 @@ export function Balloons({ count = settings.balloons.count, className = '', onPo
         /* no audio */
       }
       const phrase = settings.balloons.phrases[wordIdx.current++ % settings.balloons.phrases.length]
-      say(phrase.say)
+      window.setTimeout(() => say(phrase.text, phrase.say), 90)
       setBursts((s) => [...s, { id: ++seq, x: clientX, y: clientY, word: phrase.text }])
       onPop?.(phrase.text)
       setBalloons((list) => list.map((x) => (x.id === b.id ? { ...make(list.indexOf(x)), delay: 1 + Math.random() * 2 } : x)))

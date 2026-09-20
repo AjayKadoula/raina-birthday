@@ -115,8 +115,13 @@ export const settings = {
       { text: 'Baarish', say: 'बारिश' },
       { text: 'Sunrise, mountains', say: 'सनराइज़, माउंटेन्स' },
     ],
-    /** e.g. ['/assets/audio/voice/love-you.mp3', '/assets/audio/voice/dugguu.mp3'] */
-    voices: [] as string[], // ✎
+    /**
+     * Each phrase has a generated clip at /assets/audio/voice/<slug>.mp3
+     * (slug = the `text`, lower-case, non-letters → '-'). Re-run the generator
+     * after adding phrases, or drop in your own recording under the same name.
+     */
+    voiceClips: true,
+    /** If a clip is missing, let the phone's own voice say it. */
     speakFallback: true,
     /** Spoken-voice character: pitch 2.0 = small child, 1.0 = adult; rate 1.0 = normal. */
     voice: { pitch: 1.9, rate: 1.05, preferFemale: true }, // ✎
