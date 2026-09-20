@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Defaults; overridden at boot from settings.colors */
+  --c-ivory: 245 238 226;
+  --c-cream: 235 224 205;
+  --c-wine: 96 30 42;
+  --c-burgundy: 66 19 29;
+  --c-gold: 201 169 110;
+  --c-charcoal: 30 25 24;
+  --c-ink: 20 16 15;
+  --c-rose: 196 122 130;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--c-ink));
+  color: rgb(var(--c-ivory));
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgb(var(--c-gold) / 0.35);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--c-gold));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer components {
+  /* Subtle paper grain over dark backgrounds. */
+  .paper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* Cream paper for the letter / cards */
+  .paper-light {
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgb(255 250 240), rgb(var(--c-cream))),
+      rgb(var(--c-cream));
+    color: rgb(var(--c-ink));
+  }
+  .paper-light::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+    border-radius: inherit;
+  }
+
+  .vignette {
+    background: radial-gradient(120% 90% at 50% 40%, transparent 40%, rgb(var(--c-ink) / 0.9) 100%);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[0.95rem] font-medium tracking-wide transition-all duration-300 ease-cinematic min-h-[48px] select-none;
+  }
+  .btn-primary {
+    @apply btn bg-gold text-ink hover:bg-cream hover:shadow-glow active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn border border-ivory/25 text-ivory hover:border-gold/70 hover:text-gold active:scale-[0.98];
+  }
+  .btn-quiet {
+    @apply btn text-ivory/70 hover:text-gold px-3;
+  }
+
+  .eyebrow {
+    @apply font-sans text-[0.7rem] uppercase tracking-[0.3em] text-gold/90;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+}

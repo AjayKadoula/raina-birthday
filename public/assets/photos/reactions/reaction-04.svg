@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067" viewBox="0 0 1600 1067">
+<defs><radialGradient id="g" cx="41%" cy="44%" r="90%"><stop offset="0" stop-color="#5a3a2e"/><stop offset="1" stop-color="#2b1d1a"/></radialGradient>
+<filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0"/></filter></defs>
+<rect width="100%" height="100%" fill="url(#g)"/><rect width="100%" height="100%" filter="url(#n)"/>
+<circle cx="1152" cy="320.09999999999997" r="192.06" fill="#e6cfa3" opacity="0.12"/>
+<text x="50%" y="52%" text-anchor="middle" font-family="Georgia,serif" font-size="74.69000000000001" fill="#e6cfa3" opacity="0.85">Reaction 4</text>
+<text x="50%" y="60%" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="29.876" fill="#e6cfa3" opacity="0.55" letter-spacing="3">REPLACE WITH A REAL PHOTO</text>
+</svg>
