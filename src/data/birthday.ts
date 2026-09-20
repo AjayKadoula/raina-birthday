@@ -96,12 +96,12 @@ export const quiz = {
       rightResponse: 'Okay. That one stung a little.',
     },
     {
-      question: 'Who is more dramatic?', // ✎
-      options: ['Raina', 'Ajay', 'Both, equally', 'The question is offensive'],
-      answer: 0,
-      hint: 'The honest answer, please.',
-      wrongResponses: ['Wrong. We both know. Try again.', 'Nice try. Again.', 'Picking "offensive" is, itself, dramatic.'],
-      rightResponse: 'Thank you for your honesty. Verified.',
+      question: 'Which three words of mine do you like most?', // ✎
+      options: ["I'm not hungry", 'Five more minutes', 'Main sambhal lunga', 'You were right'],
+      answer: 2,
+      hint: "The ones I say when you're worried.",
+      wrongResponses: ['Those are three words I say. Not the ones you like.', "I have said that exactly once. Under protest.", 'Wrong. Think about the last time you were stressed.'],
+      rightResponse: 'Correct. And I mean it every time.',
     },
     {
       question: 'What happens whenever we say "5 minutes"?', // ✎
@@ -266,7 +266,7 @@ export const gifts: GiftItem[] = [
     when: 'Monday · afternoon',
     teaser: "Something else arrives today. It's six feet tall.",
     title: 'The bear', // ✎
-    description: "Six feet. Arriving today, if Amazon keeps its word. A normal-sized one would not have been dramatic enough, and we've established who the dramatic one is.", // ✎
+    description: "Six feet. Arriving today, if Amazon keeps its word. A normal-sized one would not have been enough. Nothing about you is normal-sized. That's a compliment.", // ✎
     image: { src: '/assets/photos/gifts/teddy.jpg', alt: 'A six-foot teddy bear', position: 'center' },
     message: "Name him. I'll pretend to like the name.", // ✎
   },
