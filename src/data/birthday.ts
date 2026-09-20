@@ -30,19 +30,19 @@ export const photos = {
     rain: { src: '/assets/photos/hero/rain.jpg', alt: 'Raina peeking over Ajay\'s shoulder by a rainy window', position: '50% 30%' },
   },
   memories: {
-    bike: { src: '/assets/photos/memories/bike-collage.jpg', alt: 'Raina on the Royal Enfield, Ajay in a kurta', position: 'center' },
+    bike: { src: '/assets/photos/memories/bike-collage.jpg', alt: 'Raina on the Royal Enfield, Ajay in a kurta', position: '50% 30%' },
     rajasthani: { src: '/assets/photos/memories/rajasthani-collage.jpg', alt: 'Traditional Rajasthani portraits', position: 'center' },
     heart: { src: '/assets/photos/memories/heart-celebration.jpg', alt: 'A celebration under a heart of roses', position: '50% 35%' },
-    family: { src: '/assets/photos/memories/raina-family.jpg', alt: 'Raina with family', position: '50% 30%' },
+    family: { src: '/assets/photos/memories/raina-family.jpg', alt: 'Raina with family', position: '50% 25%' },
     tilak: { src: '/assets/photos/memories/tilak-ceremony.jpg', alt: 'The tilak ceremony', position: '50% 40%' },
     retro: { src: '/assets/photos/memories/1980s.jpg', alt: 'Us, if it were the 1980s', position: 'center' },
     future: { src: '/assets/photos/memories/2060.jpg', alt: 'Us, in 2060', position: 'center' },
   },
   reactions: {
-    smug: { src: '/assets/photos/reactions/reaction-01.svg', alt: 'Reaction', position: 'center' },
-    guilty: { src: '/assets/photos/reactions/reaction-02.svg', alt: 'Reaction', position: 'center' },
-    innocent: { src: '/assets/photos/reactions/reaction-03.svg', alt: 'Reaction', position: 'center' },
-    evidence: { src: '/assets/photos/reactions/evidence.svg', alt: 'Exhibit A', position: 'center' },
+    smug: { src: '/assets/photos/reactions/raina-sunglasses.jpg', alt: 'Raina in sunglasses', position: 'center' },
+    guilty: { src: '/assets/photos/reactions/raina-peek.jpg', alt: 'Raina peeking over a shoulder', position: 'center' },
+    innocent: { src: '/assets/photos/reactions/raina-innocent.jpg', alt: 'Raina looking innocent', position: 'center' },
+    evidence: { src: '/assets/photos/memories/1980s.jpg', alt: 'Exhibit A: the 1980s photoshoot', position: 'center' },
   },
   gift: { src: '/assets/photos/gifts/gift-01.svg', alt: 'The gift', position: 'center' },
 } satisfies Record<string, Photo | Record<string, Photo>>
@@ -163,7 +163,7 @@ export const roast = {
   evidence: {
     label: 'Exhibit A',
     photo: photos.reactions.evidence,
-    caption: 'I rest my case.', // ✎  (replace evidence.svg with your funniest photo)
+    caption: 'We took ninety photos that day. Ninety. I rest my case.', // ✎  (swap in your funniest photo)
   },
   outro: ['Okay, okay.', 'I promise I have something sweet too.'],
   unlocked: 'Surprise #3 unlocked.',
@@ -241,7 +241,7 @@ export const easterEgg: EasterEgg = {
   intro: 'Things I almost put on this website.',
   items: [
     { kind: 'text', title: 'Draft #1 of the letter', body: 'It was four pages. I cut it down. You\'re welcome.' }, // ✎
-    { kind: 'photo', title: 'Blooper', src: '/assets/photos/reactions/reaction-04.svg', body: 'This did not make the timeline for obvious reasons.' }, // ✎
+    { kind: 'photo', title: "The one that didn't make it", src: '/assets/photos/memories/tilak-ceremony.jpg', body: "Look at Papa's face. Look at it." }, // ✎
     { kind: 'countdown', title: 'Next adventure', date: '2026-12-25', body: 'No details. Keep the weekend free.' }, // ✎
     // { kind: 'audio', title: 'A voice note', src: '/assets/audio/note.mp3' },
     // { kind: 'video', title: 'Behind the scenes', src: '/assets/video/bts.mp4' },
