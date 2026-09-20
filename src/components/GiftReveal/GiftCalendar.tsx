@@ -70,7 +70,7 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
               <p className="mt-3 font-serif text-title text-ink">Not yet.</p>
               {nextLocked && (
                 <p className="mt-2 font-sans text-sm text-ink/60">
-                  {settings.gifts.showLockedTeasers ? `The first one opens ${formatIst(nextLocked.unlockAt)}.` : 'It opens on its own. Come back.'}
+                  {settings.gifts.showLockedTeasers || settings.gifts.showLockedTimes ? `It opens ${formatIst(nextLocked.unlockAt)}. Come back.` : 'It opens on its own. Come back.'}
                 </p>
               )}
             </div>
@@ -88,11 +88,12 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
           )}
         </div>
         <ol className={`divide-y divide-ivory/10 rounded-2xl border-ivory/10 bg-ink/40 backdrop-blur-sm ${
-          unlocked.size > 0 || settings.gifts.showLockedTeasers ? 'border' : ''
+          unlocked.size > 0 || settings.gifts.showLockedTeasers || settings.gifts.showLockedTimes ? 'border' : ''
         }`}>
           {gifts.map((g, i) => {
             const open = unlocked.has(g.id)
-            if (!open && !settings.gifts.showLockedTeasers) return null
+            if (!open && !settings.gifts.showLockedTeasers && !settings.gifts.showLockedTimes) return null
+            const showTeaser = settings.gifts.showLockedTeasers
             const isNew = open && !seen.includes(g.id)
             const active = selected?.id === g.id
             return (
@@ -116,7 +117,7 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="flex items-center gap-2 font-sans text-[0.65rem] uppercase tracking-[0.25em] text-ivory/45">
-                      {g.when}
+                      {open || showTeaser ? g.when : 'Sealed'}
                       {isNew && (
                         <span className="inline-flex items-center gap-1 rounded-full bg-gold/15 px-2 py-0.5 normal-case tracking-normal text-gold">
                           <Sparkles size={10} /> new
@@ -124,9 +125,9 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
                       )}
                     </span>
                     <span className={`mt-0.5 block font-serif text-lg leading-snug ${open ? 'text-ivory' : 'italic text-ivory/60'}`}>
-                      {open ? g.title : g.teaser}
+                      {open ? g.title : showTeaser ? g.teaser : `Opens ${formatIst(g.unlockAt)}`}
                     </span>
-                    {!open && <span className="mt-0.5 block font-sans text-xs text-ivory/35">Opens {formatIst(g.unlockAt)}</span>}
+                    {!open && showTeaser && <span className="mt-0.5 block font-sans text-xs text-ivory/35">Opens {formatIst(g.unlockAt)}</span>}
                   </span>
                 </button>
               </li>
@@ -135,7 +136,7 @@ export function GiftCalendar({ unlocked, seen, onSeen, initialId }: Props) {
         </ol>
         {lockedCount > 0 && (
           <p className="mt-3 text-center font-sans text-sm text-ivory/50">
-            {settings.gifts.showLockedTeasers
+            {settings.gifts.showLockedTeasers || settings.gifts.showLockedTimes
               ? `${lockedCount} more ${lockedCount === 1 ? 'is' : 'are'} still sealed.`
               : 'There is more. It stays sealed for now.'}
           </p>

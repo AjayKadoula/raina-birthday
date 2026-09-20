@@ -48,6 +48,8 @@ export const settings = {
      * sealed"). true → locked rows show their day, teaser and unlock time.
      */
     showLockedTeasers: false,
+    /** true → locked gifts still show WHEN they open (date + time, IST), nothing else. */
+    showLockedTimes: true,
   },
 
   /** Subtle ambient effects. Turn any off if the phone struggles. */

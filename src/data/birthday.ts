@@ -89,12 +89,12 @@ export const quiz = {
       rightResponse: 'Correct. I hate that you know this.',
     },
     {
-      question: "What does Ajay pretend he doesn't care about?", // ✎
-      options: ['Winning arguments', 'What you think of his outfit', 'The Royal Enfield', 'Getting the last piece'],
-      answer: 1,
-      hint: 'It involves a mirror and you.',
-      wrongResponses: ['Incorrect. Do you even know me.', 'Wrong, but I admire the confidence.', 'That one I openly care about. Try again.'],
-      rightResponse: 'Okay. That one stung a little.',
+      question: "What does Ajay call you when nobody's listening?", // ✎
+      options: ['Madam', 'Boss', 'Duggu', 'Raina, formally'],
+      answer: 2,
+      hint: 'Two syllables. You pretend to mind.',
+      wrongResponses: ['Only when I am in trouble.', 'Accurate, but not what I call you.', 'I have never once called you that.'],
+      rightResponse: 'Correct, Duggu.',
     },
     {
       question: 'Which three words of mine do you like most?', // ✎
@@ -187,9 +187,9 @@ export const roast = {
     { question: "Who says 'I'm not hungry' and then eats half of the other person's plate?", ifRaina: 'Thank you for admitting it. Growth.', ifAjay: "I'll allow this because it's your birthday. (It's you.)", reaction: photos.reactions.guilty }, // ✎
     { question: "Who says 'five minutes' and means forty-five?", ifRaina: 'Bold, coming from— no. No, that one is me.', ifAjay: "Correct. I'm on my way. Five minutes.", reaction: photos.reactions.smug }, // ✎
     { question: 'Who is more stubborn?', ifRaina: "Wrong. It's me. I will argue this point for hours, which proves it.", ifAjay: "Correct. I'm working on it. (I'm not.)", reaction: photos.reactions.innocent }, // ✎
-    { question: 'Who apologises first?', ifRaina: '...Let us move on.', ifAjay: "Correct. Even when I'm right. Which, see final question.", reaction: photos.reactions.guilty }, // ✎
+    { question: 'Who apologises first?', ifRaina: "Correct. Every time. And I'm sorry about that. (See? I can too.)", ifAjay: 'Generous. Wrong. You always go first, and I always let you. Working on it.', reaction: photos.reactions.innocent }, // ✎
     { question: 'Who starts arguments and then forgets why?', ifRaina: "Generous. Wrong. It's me, and I've already forgotten what this question was.", ifAjay: 'Correct. What were we talking about?', reaction: photos.reactions.smug }, // ✎
-    { question: 'Who is the better cook?', ifRaina: 'Correct. Obviously. I am the better eater. We are a team.', ifAjay: 'Sweet of you. Wrong. Dangerous, even.', reaction: photos.reactions.innocent }, // ✎
+    { question: 'Who is the better cook?', ifRaina: "Sweet of you. Wrong. It's me, and dinner is on me, apparently forever.", ifAjay: "Correct. I'll keep cooking if you keep acting surprised.", reaction: photos.reactions.guilty }, // ✎
     { question: 'Who is actually always right?', ifRaina: "I'll allow this because it's your birthday. (It's me. Historically.)", ifAjay: 'Correct. Finally, some recognition. Screenshot this.', reaction: photos.reactions.smug }, // ✎
   ] satisfies RoastQuestion[],
   evidence: {
