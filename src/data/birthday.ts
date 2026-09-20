@@ -348,7 +348,7 @@ export const finale = {
 
 /* ── Easter egg (not one of the seven) ────────────────────────── */
 export const easterEgg: EasterEgg = {
-  enabled: true, // ✎ set false to hide entirely
+  enabled: false, // ✎ set true once the items below are real (a voice note, a blooper photo, a real countdown)
   title: 'You found the secret.',
   intro: 'Things I almost put on this website.',
   items: [
