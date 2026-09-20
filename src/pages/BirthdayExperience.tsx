@@ -41,8 +41,14 @@ export function BirthdayExperience() {
   const preview = useMemo(() => new URLSearchParams(window.location.search).has('preview'), [])
   const [phase, setPhase] = useState(() => birthdayPhase())
   useEffect(() => {
-    const t = window.setInterval(() => setPhase(birthdayPhase()), 30_000)
-    return () => window.clearInterval(t)
+    // Re-check every 30s, and fire once precisely when midnight IST arrives.
+    const poll = window.setInterval(() => setPhase(birthdayPhase()), 30_000)
+    const ms = msUntilBirthday()
+    const exact = ms > 0 && ms < 2_000_000_000 ? window.setTimeout(() => setPhase(birthdayPhase()), ms + 250) : 0
+    return () => {
+      window.clearInterval(poll)
+      window.clearTimeout(exact)
+    }
   }, [])
   const locked = settings.lockUntilBirthday && !preview && phase === 'before'
   // Live "time to go" for the preview chip on the intro (ticks every 30s).

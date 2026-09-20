@@ -63,21 +63,6 @@ export type Reason = {
   photo: Photo
 }
 
-export type Gift = {
-  title: string
-  description: string
-  /** Optional large image of the gift / destination / reservation. */
-  image?: Photo
-  /** Longer personal message shown under the reveal. */
-  message?: string
-  /** Optional external link (shop, booking, map). */
-  link?: { label: string; url: string }
-  /** Optional voucher / booking / redeem code shown in a copyable chip. */
-  code?: string
-  /** Optional QR image (put a PNG under /assets/photos/gifts/). */
-  qrImage?: string
-}
-
 export type GiftItem = {
   id: string
   /** When this gift unlocks, in IST: "YYYY-MM-DDTHH:mm". */

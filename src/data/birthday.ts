@@ -45,7 +45,6 @@ export const photos = {
     innocent: { src: '/assets/photos/reactions/raina-innocent.jpg', alt: 'Raina looking innocent', position: 'center' },
     evidence: { src: '/assets/photos/memories/1980s.jpg', alt: 'Exhibit A: the 1980s photoshoot', position: 'center' },
   },
-  gift: { src: '/assets/photos/gifts/gift-01.svg', alt: 'The gift', position: 'center' },
 } satisfies Record<string, Photo | Record<string, Photo>>
 
 /* ── Screen 0: the hook ───────────────────────────────────────── */
@@ -246,7 +245,7 @@ export const gifts: GiftItem[] = [
   },
   {
     id: 'morning',
-    unlockAt: '2026-09-21T12:30',
+    unlockAt: '2026-09-21T14:00',
     when: 'Monday · morning',
     teaser: "Don't sleep in. That's all I'm saying.",
     title: 'Phoolon ki barish', // ✎
@@ -259,7 +258,7 @@ export const gifts: GiftItem[] = [
     when: 'Monday · afternoon',
     teaser: "Something else arrives today. It's six feet tall.",
     title: 'The bear', // ✎
-    description: "Six feet. Because a normal-sized one would not have been dramatic enough, and we've established who the dramatic one is.", // ✎
+    description: "Six feet. Arriving today, if Amazon keeps its word. A normal-sized one would not have been dramatic enough, and we've established who the dramatic one is.", // ✎
     image: { src: '/assets/photos/gifts/teddy.jpg', alt: 'A six-foot teddy bear', position: 'center' },
     message: "Name him. I'll pretend to like the name.", // ✎
   },

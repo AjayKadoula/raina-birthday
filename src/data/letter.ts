@@ -13,7 +13,7 @@ export const letter = {
   paragraphs: [
     'Your laughter filled the air like music, and your smile lit up the room — drawing me in like a moth to a flame. In that instant everything else faded away. I knew I had found something special. Something worth forever.',
 
-    "You are my espresso. My daily drug. In your presence my mind gets stuck in that moment. Apart from your voice, I can't hear anything. I forget my work. We haven't met yet, and still I feel connected to you.",
+    "You are my espresso. My daily drug. In your presence my mind gets stuck in that moment. Apart from your voice, I can't hear anything. I forget my work. We hadn't even met yet, and I already felt connected to you.",
 
     'I want to conquer the world with you. I want to give you all the happiness and respect you deserve. I want to take away every headache. I want the late-night talks. I want to watch sunsets on the beach and sunrises in the mountains with you, dance in the rain with you, and go on long drives with nowhere to be.',
 
