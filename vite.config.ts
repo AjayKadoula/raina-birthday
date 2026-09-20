@@ -28,5 +28,15 @@ export default defineConfig(({ command }) => ({
   build: {
     target: 'es2020',
     sourcemap: false,
+    // Stable asset names on purpose. GitHub Pages caches index.html for ~10
+    // minutes; with hashed names a stale HTML would 404 on the new bundle and
+    // render unstyled. With fixed names it just serves the previous build.
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/app.js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name][extname]',
+      },
+    },
   },
 }))

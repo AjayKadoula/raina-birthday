@@ -29,8 +29,8 @@ export const settings = {
 
   music: {
     enabled: true,
-    /** Put an .mp3 under public/assets/audio/ and reference it here. */
-    src: '/assets/audio/theme.mp3',
+    /** Put an .mp3 under public/assets/audio/ and reference it here. Empty = use the built-in melody. */
+    src: '',
     label: 'Music',
     volume: 0.35,
     /** Try to start on the first tap/click (browsers block true autoplay). */

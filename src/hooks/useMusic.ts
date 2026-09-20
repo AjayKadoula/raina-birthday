@@ -18,12 +18,14 @@ type Engine = 'file' | 'synth' | null
 export function useMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const boxRef = useRef<MusicBox | null>(null)
-  const [engine, setEngine] = useState<Engine>(settings.music.enabled ? 'file' : null)
+  const [engine, setEngine] = useState<Engine>(
+    !settings.music.enabled ? null : settings.music.src ? 'file' : settings.music.fallbackMelody ? 'synth' : null,
+  )
   const [playing, setPlaying] = useState(false)
   const triedAutoStart = useRef(false)
 
   useEffect(() => {
-    if (!settings.music.enabled) return
+    if (!settings.music.enabled || !settings.music.src) return
     const el = new Audio(asset(settings.music.src))
     el.loop = true
     el.preload = 'auto'
