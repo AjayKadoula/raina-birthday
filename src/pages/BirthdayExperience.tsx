@@ -14,6 +14,7 @@ import { Intro } from '../components/Intro/Intro'
 import { LoveLetter } from '../components/LoveLetter/LoveLetter'
 import { MemoryGame } from '../components/MemoryGame/MemoryGame'
 import { MusicPlayer } from '../components/MusicPlayer/MusicPlayer'
+import { Nav } from '../components/Progress/Nav'
 import { Progress } from '../components/Progress/Progress'
 import { Quiz } from '../components/Quiz/Quiz'
 import { Reasons } from '../components/Reasons/Reasons'
@@ -68,6 +69,7 @@ export function BirthdayExperience() {
       {settings.effects.cursorGlow && <CursorGlow />}
 
       {!locked && stage !== 'intro' && stage !== 'wish' && <Progress unlocked={progress.unlocked} current={CURRENT[stage]} />}
+      {!locked && stage !== 'intro' && <Nav stage={stage} unlocked={progress.unlocked} onGo={goTo} />}
 
       <AnimatePresence mode="wait">
         {locked ? (

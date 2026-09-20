@@ -20,6 +20,8 @@ export const letter = {
     "When you're tired, I want to hold you in my arms. I want to protect you from the world — and help you achieve everything you set out to do.",
 
     "I don't know why I connected with you this easily. I've stopped trying to explain it.",
+
+    'You said it first: hum hain, hum hi rahenge. This is me agreeing. In writing. And everything else — main sambhal lunga.',
   ],
 
   signoff: 'Love,',

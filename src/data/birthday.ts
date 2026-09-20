@@ -111,6 +111,14 @@ export const quiz = {
       wrongResponses: ['Optimistic. Wrong, but optimistic.', 'That has never once happened.', 'Close. Add a snack.'],
       rightResponse: 'Correct. Also, we should work on that.',
     },
+    {
+      question: 'What is this relationship actually built on?', // ✎
+      options: ['Food', 'The Royal Enfield', 'Loyalty, honesty, transparency, respect, understanding', 'Winning arguments (me)'],
+      answer: 2,
+      hint: 'The serious one. You know it.',
+      wrongResponses: ['Partly. But no.', 'The bike is a witness, not a foundation.', 'Tempting. Wrong.'],
+      rightResponse: 'Correct. And food. But mostly that.',
+    },
   ] satisfies QuizQuestion[],
   verified: "Okay. She's verified. Hi, Duggu.",
   verifiedSub: 'Confidence: 100%. Sass level: also 100%.',
@@ -133,10 +141,10 @@ export const story = {
   chapters: [
     {
       title: 'The beginning',
-      subtitle: 'Neither of us knew where this was going.',
+      subtitle: 'It started with a follow request.',
       memories: [
-        { date: 'The first chapter', title: 'Where it started', photo: photos.hero.rain, caption: 'Neither of us knew where this was going.', note: 'I did. I just didn\'t say it.' }, // ✎
-        { date: 'A little later', title: 'Getting used to each other', photo: photos.memories.bike, caption: 'Evidence that we actually leave the house.', note: 'The bike gets more attention than I do.' }, // ✎
+        { date: '8 April 2026', title: 'One Instagram request', photo: photos.hero.rain, caption: 'Neither of us knew where this was going.', note: "I did. I just didn't say it." }, // ✎
+        { date: 'The weeks after', title: 'Getting used to each other', photo: photos.memories.bike, caption: 'Evidence that we actually leave the house.', note: 'The bike gets more attention than I do.' }, // ✎
       ],
     },
     {
@@ -151,16 +159,16 @@ export const story = {
       title: 'The memories',
       subtitle: 'The ones I secretly loved.',
       memories: [
-        { date: 'A celebration', title: 'Under a heart of roses', photo: photos.memories.heart, caption: 'Somehow this became one of my favourite memories.', note: 'You said the decoration was too much. You were right. I\'d do it again.' }, // ✎
-        { date: 'Home', title: 'The people who love you', photo: photos.memories.family, caption: 'Every good thing about you makes more sense after meeting them.' }, // ✎
-        { date: 'The tilak', title: 'When it became official', photo: photos.memories.tilak, caption: 'I look calm. I was not calm.' }, // ✎
+        { date: '1 June 2026', title: 'The day I called your mama', photo: photos.memories.family, caption: 'Before anything else, I wanted your people to know me. Every good thing about you makes more sense after meeting them.', note: 'Scariest phone call of my life. Worth it.' }, // ✎
+        { date: '26 July 2026', title: 'Official.', photo: photos.memories.tilak, caption: 'I look calm. I was not calm.' }, // ✎
+        { date: 'A celebration', title: 'Under a heart of roses', photo: photos.memories.heart, caption: 'Somehow this became one of my favourite memories.', note: "You said the decoration was too much. You were right. I'd do it again." }, // ✎
       ],
     },
     {
       title: 'Today',
       subtitle: 'And, apparently, 2060.',
       memories: [
-        { date: 'Now', title: 'Us', photo: photos.hero.portrait, caption: 'Still here. Still choosing this.' }, // ✎
+        { date: '21 September 2026', title: 'Your first birthday with me', photo: photos.hero.portrait, caption: 'Still here. Still choosing this.', note: 'First of many. I checked.' }, // ✎
         { date: '2060', title: 'Same people, bigger dreams', photo: photos.memories.future, caption: 'I ran the numbers. We look great.', note: 'Same team. Always.' }, // ✎
       ],
     },
@@ -176,9 +184,9 @@ export const roast = {
   questions: [
     { question: 'Who takes longer to get ready?', ifRaina: "Correct. The evidence is overwhelming.", ifAjay: "Incorrect. We all know the answer.", reaction: photos.reactions.smug }, // ✎
     { question: "Who says 'I'm not hungry' and then steals food?", ifRaina: "Thank you for admitting it. Growth.", ifAjay: "I'll allow this answer because it's your birthday.", reaction: photos.reactions.guilty }, // ✎
-    { question: 'Who is more stubborn?', ifRaina: 'Finally. Some honesty.', ifAjay: 'Wrong, and I will not be discussing this further.', reaction: photos.reactions.innocent }, // ✎
-    { question: 'Who starts arguments and then forgets why?', ifRaina: 'Correct. And then blames me. Iconic.', ifAjay: 'Objection. Overruled. Next.', reaction: photos.reactions.smug }, // ✎
-    { question: 'Who is actually always right?', ifRaina: "...Fine. Yes. It's you. Happy birthday.", ifAjay: "Wow. I'll take it. (We both know it's you.)", reaction: photos.reactions.guilty }, // ✎
+    { question: 'Who is more stubborn?', ifRaina: "Wrong. It's me. I will argue this point for hours, which proves it.", ifAjay: "Correct. I'm working on it. (I'm not.)", reaction: photos.reactions.innocent }, // ✎
+    { question: 'Who starts arguments and then forgets why?', ifRaina: "Generous. Wrong. It's me, and I've already forgotten what this question was.", ifAjay: 'Correct. What were we talking about?', reaction: photos.reactions.smug }, // ✎
+    { question: 'Who is actually always right?', ifRaina: "I'll allow this because it's your birthday. (It's me. Historically.)", ifAjay: 'Correct. Finally, some recognition. Screenshot this.', reaction: photos.reactions.guilty }, // ✎
   ] satisfies RoastQuestion[],
   evidence: {
     label: 'Exhibit A',
@@ -218,7 +226,7 @@ export const reasons = {
     { title: 'Your eyes.', body: 'I lose whole conversations in them. I have stopped apologising for this.', photo: photos.hero.rain }, // ✎
     { title: 'Your giving nature.', body: "You give before anyone asks. Then you act like it was nothing.", photo: photos.memories.heart }, // ✎
     { title: 'The way you care for your people.', body: 'Watching you with them told me everything I needed to know.', photo: photos.memories.family }, // ✎
-    { title: 'Our understanding.', body: "Half a look, and we both know. Nobody else gets it. Nobody else needs to.", photo: photos.memories.future }, // ✎
+    { title: 'Our understanding.', body: 'I give, you return it tenfold. You give, I return it tenfold. In your low, I am there. In my low, you are there.', photo: photos.memories.future }, // ✎
     { title: 'Whole you.', body: 'Not the highlights. All of it.', photo: photos.hero.portrait }, // ✎
   ] satisfies Reason[],
   twist: ['Actually...', 'That list is unfair.', "Because five isn't enough."],
@@ -291,6 +299,37 @@ export const giftScreen = {
   calendarNote: 'New gifts unlock on their own. Come back.',
   unlocked: 'Surprise #6 unlocked.',
   tease: 'You really thought that was the end?',
+}
+
+/* ── Her words (shown inside Surprise #7, before the envelope) ── */
+export const promises = {
+  eyebrow: 'Your words',
+  title: 'You told me once what you wanted.',
+  /** Quoted as she wrote it. Keep her voice. */
+  quote: [ // ✎
+    'Mujhe aap aise chahiye ho jo meri care kare, mujhe mujhse zyada samjhe, mujhe pyaar kare bahut saara, mere parivaar ko samjho, sambhalo.',
+    'Ki meri muskaan ke peeche ka dard bina kahe samajh jao. Life ke har situation, har mod pe, chahe kuch bhi ho — hum saath ho, aur haste haste sab theek ho jaaye.',
+    'Hum hain, hum hi rahenge. Aakhiri saans tak.',
+  ],
+  listTitle: 'What you asked for',
+  /** Each thing she asked for, and where it stands. */
+  items: [ // ✎
+    { ask: 'Someone who cares for you', status: 'Done. Every day. Loudly.' },
+    { ask: 'Someone who understands you more than you understand yourself', status: 'Working on it. Daily. Getting scarily good.' },
+    { ask: 'Someone who loves you bahut saara', status: 'Understatement.' },
+    { ask: 'Someone who understands and looks after your family', status: '1 June. I called your mama before anything else. You know the rest.' },
+    { ask: 'Someone who sees the pain behind your smile without you saying a word', status: "I'm watching. Always. You can't hide it from me." },
+    { ask: 'In every situation — together, and haste haste sab theek', status: 'Deal. Signed. Non-negotiable.' },
+  ],
+  /** Your side of it, under the list. */
+  vow: [ // ✎
+    'You said you would stay till the last breath. I have read that more times than I will admit.',
+    'So here is my side of it: you give, I return it tenfold. I give, you return it tenfold. In your low, I am there. In my low, you are there.',
+  ],
+  closing: 'Hum hain. Hum hi rahenge.',
+  /** The three words she likes most from you. Shown last, handwritten. */
+  lastWord: 'Aur baaki sab? Main sambhal lunga.', // ✎
+  button: 'Now, the letter →',
 }
 
 /* ── Surprise 7: the letter ───────────────────────────────────── */

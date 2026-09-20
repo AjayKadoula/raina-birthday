@@ -7,6 +7,7 @@ import { celebrate } from '../Effects/confetti'
 import { Particles } from '../Effects/Particles'
 import { Chapter } from '../ui/Chapter'
 import { LineSequence } from '../ui/LineSequence'
+import { Promises } from './Promises'
 
 type Props = { onFinished: () => void }
 
@@ -16,7 +17,7 @@ type Props = { onFinished: () => void }
  * closing lines, "One last thing...", and the final full-screen message.
  */
 export function LoveLetter({ onFinished }: Props) {
-  const [phase, setPhase] = useState<'lines' | 'envelope' | 'opening' | 'letter' | 'closing' | 'last'>('lines')
+  const [phase, setPhase] = useState<'lines' | 'promises' | 'envelope' | 'opening' | 'letter' | 'closing' | 'last'>('lines')
 
   const open = () => {
     if (phase !== 'envelope') return
@@ -25,7 +26,7 @@ export function LoveLetter({ onFinished }: Props) {
   }
 
   return (
-    <Chapter tone="dark" center={phase !== 'letter'} className={phase === 'letter' ? 'flex flex-col items-center' : ''}>
+    <Chapter tone="dark" center={phase !== 'letter' && phase !== 'promises'} className={phase === 'letter' || phase === 'promises' ? 'flex flex-col items-center' : ''}>
       {settings.effects.particles && <Particles kind={phase === 'last' ? 'both' : 'stars'} density={0.6} />}
 
       <div className="relative z-10 flex w-full max-w-xl flex-col items-center text-center">
@@ -33,7 +34,13 @@ export function LoveLetter({ onFinished }: Props) {
           {phase === 'lines' && (
             <motion.div key="lines" exit={{ opacity: 0 }}>
               <p className="eyebrow mb-6">Surprise #7</p>
-              <LineSequence lines={finale.lines} hold={2.6} keepLast={false} onDone={() => setPhase('envelope')} />
+              <LineSequence lines={finale.lines} hold={2.6} keepLast={false} onDone={() => setPhase('promises')} />
+            </motion.div>
+          )}
+
+          {phase === 'promises' && (
+            <motion.div key="promises" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex w-full justify-center">
+              <Promises onNext={() => setPhase('envelope')} />
             </motion.div>
           )}
 
