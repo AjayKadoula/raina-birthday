@@ -215,11 +215,11 @@ export const memoryGame = {
 export const reasons = {
   title: '5 things I love about you...',
   items: [
-    { title: 'Your smile.', body: 'The real one. The one before you remember there\'s a camera.', photo: photos.hero.portrait }, // ✎
-    { title: 'The way you somehow turn ordinary moments into memories.', body: 'A Tuesday with you is a story by Thursday.', photo: photos.memories.heart }, // ✎
-    { title: 'Your completely unreasonable stubbornness.', body: 'Which, annoyingly, is also why we work.', photo: photos.memories.bike }, // ✎
-    { title: 'The way you make life less boring.', body: 'I did not sign up for this much adventure. I\'m keeping it.', photo: photos.memories.retro }, // ✎
-    { title: 'You.', body: 'Just — you.', photo: photos.hero.rain }, // ✎
+    { title: 'Your eyes.', body: 'I lose whole conversations in them. I have stopped apologising for this.', photo: photos.hero.rain }, // ✎
+    { title: 'Your giving nature.', body: "You give before anyone asks. Then you act like it was nothing.", photo: photos.memories.heart }, // ✎
+    { title: 'The way you care for your people.', body: 'Watching you with them told me everything I needed to know.', photo: photos.memories.family }, // ✎
+    { title: 'Our understanding.', body: "Half a look, and we both know. Nobody else gets it. Nobody else needs to.", photo: photos.memories.future }, // ✎
+    { title: 'Whole you.', body: 'Not the highlights. All of it.', photo: photos.hero.portrait }, // ✎
   ] satisfies Reason[],
   twist: ['Actually...', 'That list is unfair.', "Because five isn't enough."],
   outro: ["Let's just say...", 'there are many.'],
