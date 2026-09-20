@@ -9,11 +9,8 @@ import { SmartImage } from '../ui/SmartImage'
 
 /** Ids of the gifts whose unlock time has passed (or all of them in ?preview). */
 export function useUnlockedGifts(): Set<string> {
-  // ?preview unlocks every gift for testing; ?preview=real keeps the real IST locks.
-  const preview = useMemo(() => {
-    const q = new URLSearchParams(window.location.search)
-    return q.has('preview') && q.get('preview') !== 'real'
-  }, [])
+  // Gift locks are always real. Only ?preview=all (for reading the sealed cards) overrides them.
+  const preview = useMemo(() => new URLSearchParams(window.location.search).get('preview') === 'all', [])
   const [now, setNow] = useState(() => Date.now())
   useEffect(() => {
     const t = window.setInterval(() => setNow(Date.now()), 15_000)

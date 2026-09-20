@@ -252,7 +252,7 @@ export const balloonRound = {
 /**
  * The gift box opens into a calendar. Each gift unlocks on its own at
  * `unlockAt` (IST). Until then she sees only `when` + `teaser`.
- * `?preview` on the URL unlocks everything so you can check the copy.
+ * Locks are real on every URL; `?preview=all` unlocks them only to proofread the cards.
  */
 export const gifts: GiftItem[] = [
   {

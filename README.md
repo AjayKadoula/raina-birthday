@@ -62,8 +62,8 @@ memories/2060.jpg
 description, image, handwritten message, optional link/code). Gifts unlock on
 their own; she reaches them from the box in Surprise #6 and later from
 "Your gifts this week" on the final screen, which shows a badge for anything
-new. `?preview` unlocks every gift for checking copy; `?preview=real` keeps the
-real locks.
+new. Gift locks are real on every URL, including `?preview`; only `?preview=all`
+unlocks them, for proofreading the cards.
 
 ## The birthday lock
 
