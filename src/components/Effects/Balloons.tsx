@@ -26,9 +26,9 @@ function make(i: number, glowEvery = 3): Balloon {
     size: 44 + Math.random() * 30,
     hue: COLOURS[i % COLOURS.length],
     glow: i % glowEvery === 0,
-    duration: 13 + Math.random() * 8,
+    duration: 7 + Math.random() * 5,
     // Negative delay starts the loop part-way through, so balloons are spread out from the first frame.
-    delay: -Math.random() * 14,
+    delay: -Math.random() * 10,
     wobble: 8 + Math.random() * 14,
   }
 }
@@ -59,7 +59,9 @@ function popSound(ctx: AudioContext) {
  * a word that drifts up ("Love you", "Dugguu"...). If voice clips are
  * configured, a random one plays; otherwise the phone's own voice says it.
  */
-export function Balloons({ count = settings.balloons.count, className = '' }: { count?: number; className?: string }) {
+type Props = { count?: number; className?: string; onPop?: (word: string) => void; active?: boolean }
+
+export function Balloons({ count = settings.balloons.count, className = '', onPop, active = true }: Props) {
   const reduced = useReducedMotion()
   const [balloons, setBalloons] = useState<Balloon[]>(() => Array.from({ length: count }, (_, i) => make(i)))
   const [bursts, setBursts] = useState<Burst[]>([])
@@ -93,9 +95,10 @@ export function Balloons({ count = settings.balloons.count, className = '' }: { 
       const phrase = settings.balloons.phrases[wordIdx.current++ % settings.balloons.phrases.length]
       say(phrase.say)
       setBursts((s) => [...s, { id: ++seq, x: clientX, y: clientY, word: phrase.text }])
+      onPop?.(phrase.text)
       setBalloons((list) => list.map((x) => (x.id === b.id ? { ...make(list.indexOf(x)), delay: 1 + Math.random() * 2 } : x)))
     },
-    [say],
+    [say, onPop],
   )
 
   useEffect(() => {
@@ -113,7 +116,7 @@ export function Balloons({ count = settings.balloons.count, className = '' }: { 
           key={b.id}
           type="button"
           aria-label="Pop a balloon"
-          onPointerDown={(e) => pop(b, e.clientX, e.clientY)}
+          onPointerDown={(e) => active && pop(b, e.clientX, e.clientY)}
           className="pointer-events-auto absolute bottom-0 flex min-h-[56px] min-w-[56px] items-center justify-center bg-transparent active:scale-125"
           style={{
             left: `${b.x}%`,
@@ -147,7 +150,7 @@ export function Balloons({ count = settings.balloons.count, className = '' }: { 
       ))}
 
       <style>{`
-        @keyframes balloon-rise { from { transform: translateY(110vh); opacity: 0 } 6% { opacity: 1 } 94% { opacity: 1 } to { transform: translateY(-25vh); opacity: 0 } }
+        @keyframes balloon-rise { from { transform: translateY(105vh); opacity: 0 } 5% { opacity: 1 } 96% { opacity: 1 } to { transform: translateY(-30vh); opacity: 0 } }
         @keyframes balloon-sway { from { transform: translateX(-10px) rotate(-3deg) } to { transform: translateX(10px) rotate(3deg) } }
       `}</style>
 

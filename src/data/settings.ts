@@ -59,11 +59,17 @@ export const settings = {
    */
   balloons: {
     enabled: true,
-    count: 7,
+    /** Balloons on screen at once, and how many she must pop to open the gift box. */
+    count: 8,
+    goal: 12,
     /** `text` floats up on screen; `say` is what the voice reads (Hindi script so डुग्गू is pronounced right). */
-    phrases: [ // ✎
+    phrases: [ // ✎  one per balloon, in rotation
       { text: 'Love you', say: 'लव यू' },
       { text: 'Dugguu', say: 'डुग्गू' },
+      { text: "You're mine", say: 'यू आर माइन' },
+      { text: 'Jaan', say: 'जान' },
+      { text: 'Kuchhu Puchhu', say: 'कुच्छू पुच्छू' },
+      { text: 'Baby', say: 'बेबी' },
       { text: 'Love you, Dugguu', say: 'लव यू डुग्गू' },
       { text: 'Happy birthday, Duggu', say: 'हैप्पी बर्थडे डुग्गू' },
     ],

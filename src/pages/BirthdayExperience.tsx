@@ -6,7 +6,7 @@ import { useBirthdayProgress, type Stage } from '../hooks/useBirthdayProgress'
 import { useMusic } from '../hooks/useMusic'
 import { birthdayPhase, msUntilBirthday } from '../utils/date'
 import { Countdown } from '../components/Countdown/Countdown'
-import { Balloons } from '../components/Effects/Balloons'
+import { BalloonGame } from '../components/BalloonGame/BalloonGame'
 import { CursorGlow } from '../components/Effects/CursorGlow'
 import { Particles } from '../components/Effects/Particles'
 import { GiftCalendar, useUnlockedGifts } from '../components/GiftReveal/GiftCalendar'
@@ -29,7 +29,7 @@ import { Chapter } from '../components/ui/Chapter'
 import { Reveal } from '../components/ui/Reveal'
 
 /** Which surprise (1–7) a stage belongs to, for the progress dots. */
-const CURRENT: Partial<Record<Stage, number>> = { quiz: 1, s1: 1, s2: 2, s3: 3, s4: 4, s5: 5, s6: 6, s7: 7 }
+const CURRENT: Partial<Record<Stage, number>> = { quiz: 1, s1: 1, s2: 2, s3: 3, s4: 4, s5: 5, balloons: 6, s6: 6, s7: 7 }
 
 /**
  * One continuous experience. Stages cross-fade; progress persists in
@@ -88,7 +88,8 @@ export function BirthdayExperience() {
             {stage === 's2' && <Timeline onNext={() => unlock(2, 's3')} />}
             {stage === 's3' && <RoastGame onNext={() => unlock(3, 's4')} />}
             {stage === 's4' && <MemoryGame onNext={() => unlock(4, 's5')} />}
-            {stage === 's5' && <Reasons onNext={() => unlock(5, 's6')} />}
+            {stage === 's5' && <Reasons onNext={() => unlock(5, 'balloons')} />}
+            {stage === 'balloons' && <BalloonGame onNext={() => goTo('s6')} />}
             {stage === 's6' && <GiftReveal onNext={() => unlock(6, 's7')} seen={progress.giftsSeen} onSeen={markGiftSeen} />}
             {stage === 's7' && <LoveLetter onFinished={() => unlock(7, 'end')} />}
             {stage === 'end' && (
@@ -124,7 +125,6 @@ function End({
   return (
     <Chapter tone="charcoal">
       {settings.effects.particles && <Particles kind="both" density={0.7} />}
-      <Balloons />
       <div className="relative z-10 flex w-full max-w-md flex-col items-center gap-8 text-center">
         <Reveal>
           <span className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/50 text-gold">

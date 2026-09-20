@@ -238,6 +238,16 @@ export const reasons = {
   unlocked: 'Surprise #5 unlocked.',
 }
 
+/* ── The balloon round (between #5 and #6) ───────────────────── */
+export const balloonRound = {
+  eyebrow: 'Before the gift',
+  title: 'Pop the balloons.',
+  sub: 'Every one of them says something. Listen.', // ✎
+  progress: (n: number, goal: number) => `${n} / ${goal}`,
+  done: ['Done.', 'Every single one of those was true.'], // ✎
+  button: 'Open Surprise #6',
+}
+
 /* ── Surprise 6: the gifts ────────────────────────────────────── */
 /**
  * The gift box opens into a calendar. Each gift unlocks on its own at

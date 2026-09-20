@@ -19,6 +19,7 @@ const LABELS: Record<Stage, string> = {
   s3: 'Surprise #3 · The roast',
   s4: 'Surprise #4 · The memory lock',
   s5: 'Surprise #5 · Five reasons',
+  balloons: 'The balloon round',
   s6: 'Surprise #6 · Your gifts',
   s7: 'Surprise #7 · The letter',
   end: 'The end',

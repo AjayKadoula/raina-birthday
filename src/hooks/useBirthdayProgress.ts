@@ -14,6 +14,7 @@ export const STAGES = [
   's3',
   's4',
   's5',
+  'balloons',
   's6',
   's7',
   'end',
