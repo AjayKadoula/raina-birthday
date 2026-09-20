@@ -68,6 +68,7 @@ export const wish = {
     "I didn't buy a card.",
     "A card can't do what this does.",
     "(Also I forgot. Kidding. Mostly.)",
+    "Happy birthday, Duggu.",
   ],
   button: 'Now, the rules →',
 }
@@ -112,7 +113,7 @@ export const quiz = {
       rightResponse: 'Correct. Also, we should work on that.',
     },
   ] satisfies QuizQuestion[],
-  verified: "Okay. She's verified.",
+  verified: "Okay. She's verified. Hi, Duggu.",
   verifiedSub: 'Confidence: 100%. Sass level: also 100%.',
 }
 
@@ -241,7 +242,7 @@ export const gifts: GiftItem[] = [
     title: 'The midnight delivery', // ✎
     description: 'A cake like the one from that night. Twenty roses. A spark gun (with refills — I know you). Balloons that light up. A crown. A "Birthday Girl" sash.', // ✎
     image: photos.memories.heart,
-    message: 'Wear the crown. All day. Non-negotiable.', // ✎
+    message: 'Wear the crown, Duggu. All day. Non-negotiable.', // ✎
   },
   {
     id: 'morning',
@@ -299,7 +300,7 @@ export const finale = {
   envelope: 'Open',
   closing: ['Happy Birthday, Raina.', 'You are one of my favourite parts of this life.'],
   lastButton: 'One last thing...',
-  lastScreen: ["Here's to all the memories we've already made...", "...and all the ones we haven't lived yet.", 'Happy Birthday ❤️', '— Ajay'],
+  lastScreen: ["Here's to all the memories we've already made...", "...and all the ones we haven't lived yet.", 'Happy Birthday, Duggu ❤️', '— Ajay'],
   unlocked: 'Surprise #7 unlocked.',
 }
 

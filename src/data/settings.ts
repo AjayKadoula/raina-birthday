@@ -7,6 +7,8 @@
 
 export const settings = {
   her: 'Raina',
+  /** What Ajay actually calls her. Used sparingly, where it lands. */
+  herPet: 'Duggu',
   him: 'Ajay',
 
   /** The birthday. Local to the timezone below. */
