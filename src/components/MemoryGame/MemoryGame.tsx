@@ -8,6 +8,7 @@ import { Particles } from '../Effects/Particles'
 import { Chapter } from '../ui/Chapter'
 import { Reveal } from '../ui/Reveal'
 import { SmartImage } from '../ui/SmartImage'
+import { aspectClass } from '../../utils/aspect'
 import { Unlocked } from '../ui/Unlocked'
 import { settings } from '../../data/settings'
 
@@ -167,7 +168,7 @@ export function MemoryGame({ onNext }: Props) {
                 {memoryGame.reveal.video ? (
                   <video src={asset(memoryGame.reveal.video)} controls playsInline className="w-full" />
                 ) : (
-                  <SmartImage photo={memoryGame.reveal.photo} priority className="aspect-[4/5] w-full sm:aspect-[5/4]" />
+                  <SmartImage photo={memoryGame.reveal.photo} priority className={`w-full ${aspectClass(memoryGame.reveal.photo)}`} />
                 )}
               </motion.div>
               <Reveal delay={0.6}>

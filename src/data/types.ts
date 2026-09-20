@@ -12,6 +12,8 @@ export type Photo = {
    * Examples: "center", "top", "50% 30%", "left center".
    */
   position?: string
+  /** Shape of the file, so frames can match it instead of cropping. Default: portrait. */
+  aspect?: 'portrait' | 'landscape' | 'square'
 }
 
 export type QuizQuestion = {

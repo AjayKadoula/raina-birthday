@@ -31,13 +31,14 @@ export const photos = {
     rain: { src: '/assets/photos/hero/rain.jpg', alt: 'Raina peeking over Ajay\'s shoulder by a rainy window', position: '50% 30%' },
   },
   memories: {
-    bike: { src: '/assets/photos/memories/bike-collage.jpg', alt: 'Raina on the Royal Enfield, Ajay in a kurta', position: '50% 30%' },
-    rajasthani: { src: '/assets/photos/memories/rajasthani-collage.jpg', alt: 'Traditional Rajasthani portraits', position: 'center' },
+    bike: { src: '/assets/photos/memories/bike-collage.jpg', alt: 'Raina on the Royal Enfield, Ajay in a kurta', position: '50% 30%', aspect: 'square' },
+    rajasthani: { src: '/assets/photos/memories/rajasthani-collage.jpg', alt: 'Traditional Rajasthani portraits', position: 'center', aspect: 'square' },
     heart: { src: '/assets/photos/memories/heart-celebration.jpg', alt: 'A celebration under a heart of roses', position: '50% 35%' },
     family: { src: '/assets/photos/memories/raina-family.jpg', alt: 'Raina with family', position: '50% 25%' },
-    tilak: { src: '/assets/photos/memories/tilak-ceremony.jpg', alt: 'The tilak ceremony', position: '50% 40%' },
-    retro: { src: '/assets/photos/memories/1980s.jpg', alt: 'Us, if it were the 1980s', position: 'center' },
-    future: { src: '/assets/photos/memories/2060.jpg', alt: 'Us, in 2060', position: 'center' },
+    tilak: { src: '/assets/photos/memories/tilak-ceremony.jpg', alt: 'The tilak ceremony', position: '50% 40%', aspect: 'landscape' },
+    retro: { src: '/assets/photos/memories/1980s.jpg', alt: 'Us, if it were the 1980s', position: 'center', aspect: 'square' },
+    future: { src: '/assets/photos/memories/2060.jpg', alt: 'Us, in 2060', position: 'center', aspect: 'square' },
+    futurePortrait: { src: '/assets/photos/memories/2060-portrait.jpg', alt: 'Us, in 2060', position: '50% 30%' },
   },
   reactions: {
     smug: { src: '/assets/photos/reactions/raina-sunglasses.jpg', alt: 'Raina in sunglasses', position: 'center' },
@@ -113,11 +114,11 @@ export const quiz = {
     },
     {
       question: 'What is this relationship actually built on?', // ✎
-      options: ['Food', 'The Royal Enfield', 'Loyalty, honesty, transparency, respect, understanding', 'Winning arguments (me)'],
-      answer: 2,
+      options: ['Money', 'Looking attractive', 'Winning arguments', 'Loyalty, honesty, transparency, respect, understanding'],
+      answer: 3,
       hint: 'The serious one. You know it.',
-      wrongResponses: ['Partly. But no.', 'The bike is a witness, not a foundation.', 'Tempting. Wrong.'],
-      rightResponse: 'Correct. And food. But mostly that.',
+      wrongResponses: ['Have you seen my bank balance. No.', 'Flattering. Also wrong.', 'Tempting. Wrong. (I would have won that argument, though.)'],
+      rightResponse: 'Correct. All five. Every day.',
     },
   ] satisfies QuizQuestion[],
   verified: "Okay. She's verified. Hi, Duggu.",
@@ -229,7 +230,7 @@ export const reasons = {
     { title: 'Your eyes.', body: 'I lose whole conversations in them. I have stopped apologising for this.', photo: photos.hero.rain }, // ✎
     { title: 'Your giving nature.', body: "You give before anyone asks. Then you act like it was nothing.", photo: photos.memories.heart }, // ✎
     { title: 'The way you care for your people.', body: 'Watching you with them told me everything I needed to know.', photo: photos.memories.family }, // ✎
-    { title: 'Our understanding.', body: 'I give, you return it tenfold. You give, I return it tenfold. In your low, I am there. In my low, you are there.', photo: photos.memories.future }, // ✎
+    { title: 'Our understanding.', body: 'I give, you return it tenfold. You give, I return it tenfold. In your low, I am there. In my low, you are there.', photo: photos.memories.futurePortrait }, // ✎
     { title: 'Whole you.', body: 'Not the highlights. All of it.', photo: photos.hero.portrait }, // ✎
   ] satisfies Reason[],
   twist: ['Actually...', 'That list is unfair.', "Because five isn't enough."],
@@ -251,7 +252,7 @@ export const gifts: GiftItem[] = [
     teaser: 'It starts at midnight.',
     title: 'The midnight delivery', // ✎
     description: 'A cake like the one from that night. Twenty roses. A spark gun (with refills — I know you). Balloons that light up. A crown. A "Birthday Girl" sash.', // ✎
-    image: photos.memories.heart,
+    image: { ...photos.memories.heart, position: '50% 60%' },
     message: 'Wear the crown, Duggu. All day. Non-negotiable.', // ✎
   },
   {

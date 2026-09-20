@@ -173,7 +173,7 @@ function GiftCard({ gift }: { gift: GiftItem }) {
         </p>
         <h2 className="mt-2 font-serif text-title leading-tight text-ink">{gift.title}</h2>
         <p className="mt-3 font-sans text-[0.95rem] leading-relaxed text-ink/70">{gift.description}</p>
-        {gift.image && <SmartImage photo={gift.image} className="mt-5 aspect-[4/3] w-full rounded-xl" />}
+        {gift.image && <SmartImage photo={gift.image} className="mt-5 aspect-square w-full rounded-xl" />}
         {gift.message && <p className="mt-5 font-hand text-2xl leading-snug text-wine">{gift.message}</p>}
         {gift.code && (
           <button

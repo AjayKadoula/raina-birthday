@@ -5,6 +5,7 @@ import type { Memory } from '../../data/types'
 import { Chapter } from '../ui/Chapter'
 import { Reveal } from '../ui/Reveal'
 import { SmartImage } from '../ui/SmartImage'
+import { aspectClass } from '../../utils/aspect'
 import { Unlocked } from '../ui/Unlocked'
 import { PhotoViewer, type ViewerItem } from '../PhotoViewer/PhotoViewer'
 
@@ -104,7 +105,7 @@ function MemoryCard({ memory, flip, onOpen }: { memory: Memory; flip: boolean; o
         className="group relative w-full overflow-hidden rounded-xl shadow-cinematic sm:w-[58%]"
       >
         <motion.div style={{ y, scale }} className="h-full w-full">
-          <SmartImage photo={memory.photo} className="aspect-[4/5] w-full sm:aspect-[5/6]" />
+          <SmartImage photo={memory.photo} className={`w-full ${aspectClass(memory.photo)}`} />
         </motion.div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent opacity-80" />
         <span className="absolute bottom-3 left-4 font-sans text-[0.65rem] uppercase tracking-[0.3em] text-ivory/80">{memory.date}</span>
