@@ -29,7 +29,9 @@ public/assets/photos/
   memories/    the timeline + memory game
   reactions/   the roast's reaction cards + "Exhibit A"
   gifts/       the gift photo / QR
-public/assets/audio/theme.mp3   optional background music
+public/assets/audio/theme.mp3   optional background music (without it, a built-in
+                                music-box "Happy Birthday" plays — public-domain melody,
+                                generated in the browser; settings.music.fallbackMelody)
 public/assets/video/            optional video for the memory-lock reveal / easter egg
 ```
 

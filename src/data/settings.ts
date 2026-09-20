@@ -31,6 +31,11 @@ export const settings = {
     volume: 0.35,
     /** Try to start on the first tap/click (browsers block true autoplay). */
     startOnFirstInteraction: true,
+    /**
+     * If the file above is missing, play a soft built-in music-box
+     * "Happy Birthday" (public-domain melody, generated in the browser).
+     */
+    fallbackMelody: true,
   },
 
   /** Subtle ambient effects. Turn any off if the phone struggles. */
