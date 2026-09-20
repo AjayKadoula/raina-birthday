@@ -338,7 +338,7 @@ export const finale = {
   envelope: 'Open',
   closing: ['Happy Birthday, Raina.', 'You are one of my favourite parts of this life.'],
   lastButton: 'One last thing...',
-  lastScreen: ["Here's to all the memories we've already made...", "...and all the ones we haven't lived yet.", 'Happy Birthday, Duggu ❤️', '— Ajay'],
+  lastScreen: ["Here's to all the memories we've already made...", "...and all the ones we haven't lived yet.", 'Happy Birthday, Duggu ❤️', '— Ajay Kadoula'],
   unlocked: 'Surprise #7 unlocked.',
 }
 

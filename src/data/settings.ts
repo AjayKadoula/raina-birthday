@@ -10,6 +10,8 @@ export const settings = {
   /** What Ajay actually calls her. Used sparingly, where it lands. */
   herPet: 'Duggu',
   him: 'Ajay',
+  /** Used where a signature belongs: the letter, the last screen, the footer. */
+  himFull: 'Ajay Kadoula',
 
   /** The birthday. Local to the timezone below. */
   birthday: { year: 2026, month: 9, day: 21 },
@@ -75,7 +77,7 @@ export const settings = {
   secretPath: 'raina',
 
   /** Shown in the tiny "made by" footer line. */
-  footer: 'Made with an unreasonable amount of time by Ajay.',
+  footer: 'Made with an unreasonable amount of time by Ajay Kadoula.',
 } as const
 
 export type Settings = typeof settings

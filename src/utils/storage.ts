@@ -9,6 +9,8 @@ export type StoredProgress = {
   secretSeen: boolean
   /** Gift ids whose reveal she has opened. */
   giftsSeen: string[]
+  /** Index (into STAGES) of the furthest stage ever reached. */
+  furthest: number
 }
 
 export const defaultProgress: StoredProgress = {
@@ -17,6 +19,7 @@ export const defaultProgress: StoredProgress = {
   introSeen: false,
   secretSeen: false,
   giftsSeen: [],
+  furthest: 0,
 }
 
 export function loadProgress(): StoredProgress {

@@ -165,7 +165,7 @@ export function BirthdayWish({ onNext }: Props) {
                         {l}
                       </p>
                     ))}
-                    <p className="pt-2 text-right font-hand text-lg text-ink/50">— {settings.him}</p>
+                    <p className="pt-2 text-right font-hand text-lg text-ink/50">— {settings.himFull}</p>
                   </div>
                 </motion.div>
                 <motion.button

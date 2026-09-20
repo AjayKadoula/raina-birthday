@@ -40,6 +40,10 @@ export function BirthdayExperience() {
   const music = useMusic()
 
   const preview = useMemo(() => new URLSearchParams(window.location.search).has('preview'), [])
+  const debug = useMemo(() => {
+    const q = new URLSearchParams(window.location.search)
+    return q.has('preview') || q.has('debug')
+  }, [])
   const [phase, setPhase] = useState(() => birthdayPhase())
   useEffect(() => {
     // Re-check every 30s, and fire once precisely when midnight IST arrives.
@@ -69,7 +73,7 @@ export function BirthdayExperience() {
       {settings.effects.cursorGlow && <CursorGlow />}
 
       {!locked && stage !== 'intro' && stage !== 'wish' && <Progress unlocked={progress.unlocked} current={CURRENT[stage]} />}
-      {!locked && stage !== 'intro' && <Nav stage={stage} unlocked={progress.unlocked} onGo={goTo} />}
+      {!locked && stage !== 'intro' && <Nav stage={stage} furthest={progress.furthest} onGo={goTo} />}
 
       <AnimatePresence mode="wait">
         {locked ? (
@@ -94,7 +98,7 @@ export function BirthdayExperience() {
       </AnimatePresence>
 
       <MusicPlayer playing={music.playing} available={music.available} onToggle={music.toggle} />
-      <SettingsPanel stage={stage} unlocked={progress.unlocked} onReset={reset} onJump={goTo} />
+      {debug && <SettingsPanel stage={stage} unlocked={progress.unlocked} onReset={reset} onJump={goTo} />}
     </main>
   )
 }

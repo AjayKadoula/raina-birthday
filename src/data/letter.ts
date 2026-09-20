@@ -25,7 +25,7 @@ export const letter = {
   ],
 
   signoff: 'Love,',
-  signature: 'Ajay',
+  signature: 'Ajay Kadoula',
 
   /** Small handwritten postscript under the signature. Optional — set to '' to hide. */
   postscript: 'P.S. Yes, this took too long. You were worth it.',

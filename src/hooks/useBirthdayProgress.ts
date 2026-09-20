@@ -24,7 +24,11 @@ export type Stage = (typeof STAGES)[number]
 export const TOTAL_SURPRISES = 7
 
 export function useBirthdayProgress() {
-  const [progress, setProgress] = useState<StoredProgress>(() => loadProgress())
+  const [progress, setProgress] = useState<StoredProgress>(() => {
+    // Older saves have no `furthest`; the stage they were on is at least that far.
+    const p = loadProgress()
+    return { ...p, furthest: Math.max(p.furthest, STAGES.indexOf(p.stage as Stage)) }
+  })
 
   useEffect(() => {
     saveProgress(progress)
@@ -33,12 +37,17 @@ export function useBirthdayProgress() {
   const stage = (STAGES.includes(progress.stage as Stage) ? progress.stage : 'intro') as Stage
 
   const goTo = useCallback((next: Stage) => {
-    setProgress((p) => ({ ...p, stage: next, introSeen: p.introSeen || next !== 'intro' }))
+    setProgress((p) => ({
+      ...p,
+      stage: next,
+      introSeen: p.introSeen || next !== 'intro',
+      furthest: Math.max(p.furthest, STAGES.indexOf(next)),
+    }))
   }, [])
 
   /** Mark surprise `n` (1–7) as unlocked and move on to the following stage. */
   const unlock = useCallback((n: number, next: Stage) => {
-    setProgress((p) => ({ ...p, unlocked: Math.max(p.unlocked, n), stage: next }))
+    setProgress((p) => ({ ...p, unlocked: Math.max(p.unlocked, n), stage: next, furthest: Math.max(p.furthest, STAGES.indexOf(next)) }))
   }, [])
 
   const markSecretSeen = useCallback(() => setProgress((p) => ({ ...p, secretSeen: true })), [])

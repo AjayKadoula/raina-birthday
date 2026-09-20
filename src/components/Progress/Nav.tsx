@@ -5,8 +5,8 @@ import { STAGES, type Stage } from '../../hooks/useBirthdayProgress'
 
 type Props = {
   stage: Stage
-  /** Highest surprise number (1–7) fully unlocked. */
-  unlocked: number
+  /** Index of the furthest stage she has actually reached. */
+  furthest: number
   onGo: (s: Stage) => void
 }
 
@@ -24,20 +24,14 @@ const LABELS: Record<Stage, string> = {
   end: 'The end',
 }
 
-/** The furthest stage she is allowed to be on, from the unlock count. */
-function furthestIndex(stage: Stage, unlocked: number): number {
-  const byUnlock = unlocked >= 7 ? STAGES.indexOf('end') : STAGES.indexOf(`s${unlocked + 1}` as Stage)
-  return Math.max(STAGES.indexOf(stage), byUnlock)
-}
-
 /**
  * Back (one step) top-left and a chapter menu top-right. Only stages she has
  * already reached are open; the rest stay locked so nothing is skipped.
  */
-export function Nav({ stage, unlocked, onGo }: Props) {
+export function Nav({ stage, furthest: reached, onGo }: Props) {
   const [open, setOpen] = useState(false)
   const idx = STAGES.indexOf(stage)
-  const furthest = furthestIndex(stage, unlocked)
+  const furthest = Math.max(reached, idx)
   const prev = idx > 0 ? STAGES[idx - 1] : null
 
   return (
