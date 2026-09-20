@@ -11,15 +11,6 @@ import { Reveal } from '../ui/Reveal'
 type Props = { onNext: () => void }
 
 const CANDLES = 3
-const BLOWN_KEY = 'raina-birthday:wish-blown'
-
-function wasBlown(): boolean {
-  try {
-    return localStorage.getItem(BLOWN_KEY) === '1'
-  } catch {
-    return false
-  }
-}
 
 /**
  * The actual birthday wish, before any of the seven surprises.
@@ -27,9 +18,9 @@ function wasBlown(): boolean {
  * one goes, confetti, a wish, and a handwritten note.
  */
 export function BirthdayWish({ onNext }: Props) {
-  // Once she has blown them out, they stay out — even if she comes back to this screen.
-  const [lit, setLit] = useState<boolean[]>(() => Array(CANDLES).fill(!wasBlown()))
-  const [blown, setBlown] = useState(() => wasBlown())
+  // Candles are lit on every visit; a touch puts each one out.
+  const [lit, setLit] = useState<boolean[]>(() => Array(CANDLES).fill(true))
+  const [blown, setBlown] = useState(false)
   const reduced = useReducedMotion()
 
   const blow = (i: number) => {
@@ -41,11 +32,6 @@ export function BirthdayWish({ onNext }: Props) {
     if (blown || lit.some(Boolean)) return
     const t = window.setTimeout(() => {
       setBlown(true)
-      try {
-        localStorage.setItem(BLOWN_KEY, '1')
-      } catch {
-        /* ignore */
-      }
       giftBurst()
       window.setTimeout(celebrate, 900)
     }, 500)

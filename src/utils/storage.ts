@@ -44,7 +44,6 @@ export function saveProgress(p: StoredProgress) {
 export function clearProgress() {
   try {
     localStorage.removeItem(KEY)
-    localStorage.removeItem('raina-birthday:wish-blown')
   } catch {
     /* ignore */
   }
