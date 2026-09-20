@@ -7,6 +7,7 @@ import { clearProgress, loadProgress, saveProgress, type StoredProgress } from '
  */
 export const STAGES = [
   'intro',
+  'wish',
   'quiz',
   's1',
   's2',

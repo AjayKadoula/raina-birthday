@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react'
 import { settings } from '../data/settings'
 import { useBirthdayProgress, type Stage } from '../hooks/useBirthdayProgress'
 import { useMusic } from '../hooks/useMusic'
-import { birthdayPhase } from '../utils/date'
+import { birthdayPhase, msUntilBirthday } from '../utils/date'
 import { Countdown } from '../components/Countdown/Countdown'
 import { CursorGlow } from '../components/Effects/CursorGlow'
 import { Particles } from '../components/Effects/Particles'
@@ -21,6 +21,7 @@ import { SecretReveal } from '../components/SecretReveal/SecretReveal'
 import { SettingsPanel } from '../components/Settings/SettingsPanel'
 import { SurpriseCard } from '../components/SurpriseCard/SurpriseCard'
 import { Timeline } from '../components/Timeline/Timeline'
+import { BirthdayWish } from '../components/Wish/BirthdayWish'
 import { Chapter } from '../components/ui/Chapter'
 import { Reveal } from '../components/ui/Reveal'
 
@@ -43,6 +44,7 @@ export function BirthdayExperience() {
     return () => window.clearInterval(t)
   }, [])
   const locked = settings.lockUntilBirthday && !preview && phase === 'before'
+  const daysToGo = Math.ceil(msUntilBirthday() / 86_400_000)
 
   // Scroll to the top whenever the chapter changes.
   useEffect(() => {
@@ -53,14 +55,15 @@ export function BirthdayExperience() {
     <main className="relative min-h-[100svh]">
       {settings.effects.cursorGlow && <CursorGlow />}
 
-      {!locked && stage !== 'intro' && <Progress unlocked={progress.unlocked} current={CURRENT[stage]} />}
+      {!locked && stage !== 'intro' && stage !== 'wish' && <Progress unlocked={progress.unlocked} current={CURRENT[stage]} />}
 
       <AnimatePresence mode="wait">
         {locked ? (
           <Countdown key="countdown" />
         ) : (
           <motion.div key={stage} className="min-h-[100svh]">
-            {stage === 'intro' && <Intro onBegin={() => goTo('quiz')} />}
+            {stage === 'intro' && <Intro onBegin={() => goTo('wish')} daysToGo={phase === 'before' ? daysToGo : null} />}
+            {stage === 'wish' && <BirthdayWish onNext={() => goTo('quiz')} />}
             {stage === 'quiz' && <Quiz onVerified={() => goTo('s1')} />}
             {stage === 's1' && <SurpriseCard onNext={() => unlock(1, 's2')} />}
             {stage === 's2' && <Timeline onNext={() => unlock(2, 's3')} />}

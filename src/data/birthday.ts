@@ -19,6 +19,7 @@ import type {
   Reason,
   RoastQuestion,
 } from './types'
+import { formatBirthday } from '../utils/date'
 
 /* ── Photo registry ─────────────────────────────────────────────
  * Naming the photos once here keeps the rest of the file readable.
@@ -55,17 +56,35 @@ export const intro = {
   footnote: 'Yes, I spent an unreasonable amount of time on this.',
 }
 
+/* ── The birthday wish (before any surprise) ─────────────────── */
+export const wish = {
+  eyebrow: formatBirthday(),
+  headline: 'Happy Birthday, Raina.',
+  sub: "Officially one year more amazing. Also one year more stubborn. Both are true.", // ✎
+  candleHint: 'Tap the candles. Make a wish.',
+  afterBlow: ['Okay. Wish made.', "If it was about me — understandable."], // ✎
+  /** Handwritten note under the cake. Each string is a line. */
+  note: [ // ✎
+    "I didn't buy a card.",
+    "A card can't do what this does.",
+    "(Also I forgot. Kidding. Mostly.)",
+  ],
+  button: 'Now, the rules →',
+}
+
 /* ── Surprise 1: the password ─────────────────────────────────── */
 export const quiz = {
   title: 'Before we begin...',
   subtitle: "Prove you're actually Raina.",
+  blurb: "This website contains sensitive material (my feelings). Identity check required.", // ✎
+  notHer: "Not Raina? Then this isn't for you. Close the tab. (Send it to her first.)",
   questions: [
     {
       question: "What is Ajay's most annoying habit?", // ✎
       options: ['Saying "5 minutes"', 'Explaining things nobody asked about', 'Checking his phone mid-sentence', 'All of the above, obviously'],
       answer: 3,
       hint: 'Think bigger. Think... all of it.',
-      wrongResponses: ['Wrong. Interesting. We need to discuss this relationship.', 'Bold of you to pick just one.'],
+      wrongResponses: ['Wrong. Interesting. We need to discuss this relationship.', 'Bold of you to pick just one.', 'Generous. Wrong, but generous.'],
       rightResponse: 'Correct. I hate that you know this.',
     },
     {
@@ -73,7 +92,7 @@ export const quiz = {
       options: ['Winning arguments', 'What you think of his outfit', 'The Royal Enfield', 'Getting the last piece'],
       answer: 1,
       hint: 'It involves a mirror and you.',
-      wrongResponses: ['Incorrect. Do you even know me.', 'Wrong, but I admire the confidence.'],
+      wrongResponses: ['Incorrect. Do you even know me.', 'Wrong, but I admire the confidence.', 'That one I openly care about. Try again.'],
       rightResponse: 'Okay. That one stung a little.',
     },
     {
@@ -81,7 +100,7 @@ export const quiz = {
       options: ['Raina', 'Ajay', 'Both, equally', 'The question is offensive'],
       answer: 0,
       hint: 'The honest answer, please.',
-      wrongResponses: ['Wrong. We both know. Try again.', 'Nice try. Again.'],
+      wrongResponses: ['Wrong. We both know. Try again.', 'Nice try. Again.', 'Picking "offensive" is, itself, dramatic.'],
       rightResponse: 'Thank you for your honesty. Verified.',
     },
     {
@@ -89,11 +108,12 @@ export const quiz = {
       options: ['Five minutes', 'Twenty minutes', 'Forty-five minutes and a snack', 'We forget what we were doing'],
       answer: 2,
       hint: 'Be realistic.',
-      wrongResponses: ['Optimistic. Wrong, but optimistic.', 'That has never once happened.'],
+      wrongResponses: ['Optimistic. Wrong, but optimistic.', 'That has never once happened.', 'Close. Add a snack.'],
       rightResponse: 'Correct. Also, we should work on that.',
     },
   ] satisfies QuizQuestion[],
   verified: "Okay. She's verified.",
+  verifiedSub: 'Confidence: 100%. Sass level: also 100%.',
 }
 
 export const surprise1 = {
@@ -101,7 +121,7 @@ export const surprise1 = {
   title: 'This is my favourite photo of us.', // ✎
   photo: photos.hero.portrait,
   message: // ✎
-    "I looked through a lot of photos to pick this one. Not because it's the best photo — because it's the most us. Anyway. Welcome. There are six more of these.",
+    "I looked through 400 photos to pick this one. Not because it's the best — because it's the most us. Anyway. Welcome. There are six more of these, and yes, I'm aware I have a problem.",
   unlocked: 'Surprise #1 unlocked.',
   next: 'Open Surprise #2',
 }

@@ -55,7 +55,7 @@ memories/2060.jpg
 
 ## The birthday lock
 
-`settings.lockUntilBirthday = true` shows only the countdown until 21 Nov 2026
+`settings.lockUntilBirthday = true` shows only the countdown until 21 Sep 2026
 (midnight, Asia/Kolkata). To test the full experience before then open the site
 with `?preview` — e.g. `https://ajaykadoula.github.io/raina-birthday/?preview` —
 or set the flag to `false`.

@@ -21,6 +21,7 @@ export function Quiz({ onVerified }: Props) {
   const [locked, setLocked] = useState(false)
   const [verified, setVerified] = useState(false)
   const [shake, setShake] = useState(0)
+  const [notHer, setNotHer] = useState(false)
 
   const q = quiz.questions[qi]
   const total = quiz.questions.length
@@ -69,6 +70,7 @@ export function Quiz({ onVerified }: Props) {
                 <ShieldCheck size={30} strokeWidth={1.5} />
               </motion.div>
               <p className="font-serif text-headline leading-tight text-ivory">{quiz.verified}</p>
+              <p className="font-hand text-xl text-gold/70">{quiz.verifiedSub}</p>
             </motion.div>
           ) : (
             <motion.div key={qi} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.5 }}>
@@ -80,6 +82,7 @@ export function Quiz({ onVerified }: Props) {
                     <br />
                     <span className="italic text-gold">{quiz.subtitle}</span>
                   </h1>
+                  <p className="mx-auto mt-4 max-w-sm font-sans text-sm text-ivory/55">{quiz.blurb}</p>
                 </Reveal>
               )}
 
@@ -123,6 +126,9 @@ export function Quiz({ onVerified }: Props) {
               </div>
 
               <div className="mt-6 min-h-[4.5rem]" aria-live="polite">
+                {notHer && (
+                  <p className="mb-3 text-center font-serif text-lg text-ivory/80">{quiz.notHer}</p>
+                )}
                 <AnimatePresence mode="wait">
                   {feedback && (
                     <motion.div
@@ -142,6 +148,12 @@ export function Quiz({ onVerified }: Props) {
                   )}
                 </AnimatePresence>
               </div>
+
+              {!notHer && !locked && (
+                <button type="button" onClick={() => setNotHer(true)} className="btn-quiet mx-auto mt-2 block text-ivory/35">
+                  I'm not Raina
+                </button>
+              )}
             </motion.div>
           )}
         </AnimatePresence>

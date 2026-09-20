@@ -10,7 +10,7 @@ export const settings = {
   him: 'Ajay',
 
   /** The birthday. Local to the timezone below. */
-  birthday: { year: 2026, month: 11, day: 21 },
+  birthday: { year: 2026, month: 9, day: 21 },
   timezone: 'Asia/Kolkata',
 
   /**
