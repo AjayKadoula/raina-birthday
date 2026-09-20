@@ -7,6 +7,8 @@ export type StoredProgress = {
   stage: string
   introSeen: boolean
   secretSeen: boolean
+  /** Gift ids whose reveal she has opened. */
+  giftsSeen: string[]
 }
 
 export const defaultProgress: StoredProgress = {
@@ -14,6 +16,7 @@ export const defaultProgress: StoredProgress = {
   stage: 'intro',
   introSeen: false,
   secretSeen: false,
+  giftsSeen: [],
 }
 
 export function loadProgress(): StoredProgress {

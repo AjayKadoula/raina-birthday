@@ -78,6 +78,23 @@ export type Gift = {
   qrImage?: string
 }
 
+export type GiftItem = {
+  id: string
+  /** When this gift unlocks, in IST: "YYYY-MM-DDTHH:mm". */
+  unlockAt: string
+  /** Short label for the calendar row, e.g. "Monday · midnight". */
+  when: string
+  /** One line shown while locked. Keep it teasing, not revealing. */
+  teaser: string
+  title: string
+  description: string
+  image?: Photo
+  /** Handwritten line under the reveal. */
+  message?: string
+  link?: { label: string; url: string }
+  code?: string
+}
+
 export type EasterEgg = {
   enabled: boolean
   title: string

@@ -43,10 +43,14 @@ export function useBirthdayProgress() {
 
   const markSecretSeen = useCallback(() => setProgress((p) => ({ ...p, secretSeen: true })), [])
 
+  const markGiftSeen = useCallback((id: string) => {
+    setProgress((p) => (p.giftsSeen.includes(id) ? p : { ...p, giftsSeen: [...p.giftsSeen, id] }))
+  }, [])
+
   const reset = useCallback(() => {
     clearProgress()
     setProgress(loadProgress())
   }, [])
 
-  return { progress, stage, goTo, unlock, reset, markSecretSeen }
+  return { progress, stage, goTo, unlock, reset, markSecretSeen, markGiftSeen }
 }

@@ -12,7 +12,7 @@
 import type {
   Chapter,
   EasterEgg,
-  Gift,
+  GiftItem,
   MemoryPair,
   Photo,
   QuizQuestion,
@@ -226,20 +226,69 @@ export const reasons = {
   unlocked: 'Surprise #5 unlocked.',
 }
 
-/* ── Surprise 6: the gift ─────────────────────────────────────── */
-export const gift: Gift = {
-  title: 'Your gift', // ✎
-  description: 'Something you can actually hold. It\'s waiting for you.', // ✎
-  image: photos.gift, // ✎  replace gift-01.svg with a photo of the gift / destination
-  message: 'Okay, so this part isn\'t digital. Come find me.', // ✎
-  // link: { label: 'See where we\'re going', url: 'https://maps.google.com/?q=' }, // ✎ optional
-  // code: 'RAINA-2111', // ✎ optional voucher / booking reference
-  // qrImage: '/assets/photos/gifts/qr.png', // ✎ optional
-}
+/* ── Surprise 6: the gifts ────────────────────────────────────── */
+/**
+ * The gift box opens into a calendar. Each gift unlocks on its own at
+ * `unlockAt` (IST). Until then she sees only `when` + `teaser`.
+ * `?preview` on the URL unlocks everything so you can check the copy.
+ */
+export const gifts: GiftItem[] = [
+  {
+    id: 'midnight',
+    unlockAt: '2026-09-21T00:00',
+    when: 'Monday · midnight',
+    teaser: 'It starts at midnight.',
+    title: 'The midnight delivery', // ✎
+    description: 'A cake like the one from that night. Twenty roses. A spark gun (with refills — I know you). Balloons that light up. A crown. A "Birthday Girl" sash.', // ✎
+    image: photos.memories.heart,
+    message: 'Wear the crown. All day. Non-negotiable.', // ✎
+  },
+  {
+    id: 'morning',
+    unlockAt: '2026-09-21T12:30',
+    when: 'Monday · morning',
+    teaser: "Don't sleep in. That's all I'm saying.",
+    title: 'Phoolon ki barish', // ✎
+    description: 'The room this morning. The petals. The people who showed up. Yes — all of it was planned. My sister had one job, and it was two kilos of flowers.', // ✎
+    message: 'You were outnumbered. On purpose.', // ✎
+  },
+  {
+    id: 'teddy',
+    unlockAt: '2026-09-21T17:00',
+    when: 'Monday · afternoon',
+    teaser: "Something else arrives today. It's six feet tall.",
+    title: 'The bear', // ✎
+    description: "Six feet. Because a normal-sized one would not have been dramatic enough, and we've established who the dramatic one is.", // ✎
+    image: { src: '/assets/photos/gifts/teddy.jpg', alt: 'A six-foot teddy bear', position: 'center' },
+    message: "Name him. I'll pretend to like the name.", // ✎
+  },
+  {
+    id: 'wednesday',
+    unlockAt: '2026-09-23T00:00',
+    when: 'Wednesday',
+    teaser: 'Two small things. One of them glows.',
+    title: 'The card, and a rose that never dies', // ✎
+    description: 'A handmade card with our photos in it — the ones that did not fit on this website. And a galaxy rose in a glass dome, because a real one would have given up by Friday.', // ✎
+    image: { src: '/assets/photos/gifts/galaxy-rose.jpg', alt: 'A galaxy rose in a glass dome', position: 'center' },
+    message: 'Read the card slowly. I did not write it quickly.', // ✎
+  },
+  {
+    id: 'thursday',
+    unlockAt: '2026-09-24T00:00',
+    when: 'Thursday',
+    teaser: 'The last box. Probably.',
+    title: 'The hamper', // ✎
+    description: 'One box, many small things. Something to wear, something to hold, something to keep.', // ✎
+    image: { src: '/assets/photos/gifts/hamper.jpg', alt: 'A birthday hamper', position: 'center' },
+    message: "Okay. Now I'm done. (For this week.)", // ✎
+  },
+]
 
 export const giftScreen = {
   lines: ["You've made it this far.", 'One more thing...'],
   button: 'Open your gift',
+  calendarTitle: 'This week',
+  calendarNote: 'New gifts unlock on their own. Come back.',
   unlocked: 'Surprise #6 unlocked.',
   tease: 'You really thought that was the end?',
 }

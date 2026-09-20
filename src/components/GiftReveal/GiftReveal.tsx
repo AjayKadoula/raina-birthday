@@ -1,43 +1,31 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
-import { Check, Copy, ExternalLink, Gift as GiftIcon } from 'lucide-react'
-import { gift, giftScreen } from '../../data/birthday'
+import { Gift as GiftIcon } from 'lucide-react'
+import { giftScreen } from '../../data/birthday'
 import { settings } from '../../data/settings'
-import { asset } from '../../utils/assets'
 import { giftBurst } from '../Effects/confetti'
 import { Particles } from '../Effects/Particles'
 import { Chapter } from '../ui/Chapter'
 import { LineSequence } from '../ui/LineSequence'
-import { SmartImage } from '../ui/SmartImage'
 import { Unlocked } from '../ui/Unlocked'
+import { GiftCalendar, useUnlockedGifts } from './GiftCalendar'
 
-type Props = { onNext: () => void }
+type Props = { onNext: () => void; seen: string[]; onSeen: (id: string) => void }
 
 /**
  * Surprise #6 — the gift box. Screen darkens, a box sits in warm light;
  * "Open your gift" shakes it, the ribbon lifts, the lid flies, a burst of
  * light and confetti, and the configurable gift card rises out of it.
  */
-export function GiftReveal({ onNext }: Props) {
+export function GiftReveal({ onNext, seen, onSeen }: Props) {
   const [phase, setPhase] = useState<'lines' | 'box' | 'opening' | 'revealed' | 'done'>('lines')
-  const [copied, setCopied] = useState(false)
+  const unlocked = useUnlockedGifts()
 
   const openBox = () => {
     if (phase !== 'box') return
     setPhase('opening')
     window.setTimeout(giftBurst, 900)
     window.setTimeout(() => setPhase('revealed'), 1500)
-  }
-
-  const copy = async () => {
-    if (!gift.code) return
-    try {
-      await navigator.clipboard.writeText(gift.code)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1600)
-    } catch {
-      /* clipboard blocked; the code is still visible */
-    }
   }
 
   const opening = phase === 'opening' || phase === 'revealed'
@@ -124,57 +112,19 @@ export function GiftReveal({ onNext }: Props) {
                 </motion.button>
               )}
 
-              {/* The gift card rising out of the box */}
+              {/* The calendar rising out of the box */}
               <AnimatePresence>
                 {phase === 'revealed' && (
                   <motion.div
-                    initial={{ opacity: 0, y: 80, scale: 0.9 }}
-                    animate={{ opacity: 1, y: -40, scale: 1 }}
+                    initial={{ opacity: 0, y: 80 }}
+                    animate={{ opacity: 1, y: -40 }}
                     transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                    className="paper-light relative -mt-16 w-full max-w-md overflow-hidden rounded-2xl p-5 text-left shadow-cinematic sm:p-7"
-                    role="region"
-                    aria-label="Your gift"
+                    className="-mt-16 flex w-full flex-col items-center gap-6"
                   >
-                    <div className="relative z-10">
-                      <p className="font-sans text-[0.65rem] uppercase tracking-[0.3em] text-wine/70">For {settings.her}</p>
-                      <h2 className="mt-2 font-serif text-title leading-tight text-ink">{gift.title}</h2>
-                      <p className="mt-3 font-sans text-[0.95rem] leading-relaxed text-ink/70">{gift.description}</p>
-
-                      {gift.image && <SmartImage photo={gift.image} className="mt-5 aspect-[4/3] w-full rounded-xl" />}
-
-                      {gift.message && <p className="mt-5 font-hand text-2xl leading-snug text-wine">{gift.message}</p>}
-
-                      {gift.code && (
-                        <button
-                          type="button"
-                          onClick={copy}
-                          className="mt-5 inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-wine/25 bg-white/60 px-4 py-2 font-sans text-sm tracking-[0.15em] text-ink"
-                          aria-label={`Copy code ${gift.code}`}
-                        >
-                          {gift.code}
-                          {copied ? <Check size={14} className="text-wine" /> : <Copy size={14} className="opacity-50" />}
-                        </button>
-                      )}
-
-                      {gift.qrImage && (
-                        <img src={asset(gift.qrImage)} alt="QR code" className="mt-5 h-40 w-40 rounded-lg bg-white p-2" loading="lazy" />
-                      )}
-
-                      {gift.link && (
-                        <a
-                          href={gift.link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn mt-5 bg-wine text-ivory hover:bg-burgundy"
-                        >
-                          {gift.link.label} <ExternalLink size={15} />
-                        </a>
-                      )}
-
-                      <button type="button" onClick={() => setPhase('done')} className="btn-quiet mt-6 -ml-3 text-wine">
-                        Continue →
-                      </button>
-                    </div>
+                    <GiftCalendar unlocked={unlocked} seen={seen} onSeen={onSeen} />
+                    <button type="button" onClick={() => setPhase('done')} className="btn-ghost">
+                      Continue →
+                    </button>
                   </motion.div>
                 )}
               </AnimatePresence>

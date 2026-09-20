@@ -60,3 +60,22 @@ export function formatBirthday(): string {
     timeZone: 'UTC',
   })
 }
+
+/** Parse "YYYY-MM-DDTHH:mm" as an IST wall-clock time → epoch ms. */
+export function istToMs(local: string): number {
+  const [d, t = '00:00'] = local.split('T')
+  const [y, m, day] = d.split('-').map(Number)
+  const [hh, mm] = t.split(':').map(Number)
+  return Date.UTC(y, m - 1, day, hh, mm) - IST_OFFSET_MS
+}
+
+export function formatIst(local: string): string {
+  return new Date(istToMs(local)).toLocaleString('en-IN', {
+    timeZone: settings.timezone,
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    hour: 'numeric',
+    minute: '2-digit',
+  })
+}

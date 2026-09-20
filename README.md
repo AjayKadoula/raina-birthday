@@ -55,6 +55,16 @@ memories/2060.jpg
 - A missing file shows a quiet "a photo goes here" tile instead of breaking a screen.
 - Keep files under ~500 KB each for phones (export at ~1600px on the long edge).
 
+## The gifts (Surprise #6)
+
+`gifts` in `birthday.ts` is a calendar: each entry has `unlockAt` (IST,
+`"YYYY-MM-DDTHH:mm"`), a `teaser` shown while locked, and the reveal (title,
+description, image, handwritten message, optional link/code). Gifts unlock on
+their own; she reaches them from the box in Surprise #6 and later from
+"Your gifts this week" on the final screen, which shows a badge for anything
+new. `?preview` unlocks every gift for checking copy; `?preview=real` keeps the
+real locks.
+
 ## The birthday lock
 
 `settings.lockUntilBirthday = true` shows only the countdown until 21 Sep 2026
