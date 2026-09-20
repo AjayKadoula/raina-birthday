@@ -245,6 +245,7 @@ export const balloonRound = {
   sub: 'Every one of them says something. Listen.', // ✎
   progress: (n: number, goal: number) => `${n} / ${goal}`,
   done: ['Done.', 'Every single one of those was true.'], // ✎
+  keepGoing: 'Or keep popping. There are fifty of them.', // ✎
   button: 'Open Surprise #6',
 }
 

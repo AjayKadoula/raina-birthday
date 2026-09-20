@@ -35,7 +35,7 @@ export function BalloonGame({ onNext }: Props) {
 
   return (
     <Chapter tone="charcoal" className="!p-0">
-      <Balloons count={settings.balloons.count} onPop={onPop} active={!done} />
+      <Balloons count={settings.balloons.count} onPop={onPop} />
 
       {/* Header — stays out of the way of the balloons */}
       <div className="pointer-events-none relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-6 pb-14 pt-24 text-center">
@@ -83,6 +83,14 @@ export function BalloonGame({ onNext }: Props) {
                 <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }} type="button" onClick={onNext} className="btn-primary">
                   {balloonRound.button} <ArrowRight size={18} />
                 </motion.button>
+                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.2 }} className="font-sans text-xs tracking-[0.2em] text-ivory/45">
+                  {balloonRound.keepGoing.toUpperCase()} · {popped} POPPED
+                </motion.p>
+                {lastWord && (
+                  <motion.span key={lastWord + popped} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="font-hand text-2xl text-ivory/80">
+                    “{lastWord}”
+                  </motion.span>
+                )}
               </motion.div>
             )}
           </AnimatePresence>
