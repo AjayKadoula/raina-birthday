@@ -91,11 +91,12 @@ export function useMusic() {
       triedAutoStart.current = true
       void play()
     }
-    window.addEventListener('pointerdown', handler, { once: true })
-    window.addEventListener('keydown', handler, { once: true })
+    // These are the events browsers accept as a user gesture for audio on
+    // both desktop and touch (pointerdown from a finger is NOT one on Android).
+    const events = ['click', 'touchend', 'keydown'] as const
+    for (const ev of events) window.addEventListener(ev, handler, { passive: true })
     return () => {
-      window.removeEventListener('pointerdown', handler)
-      window.removeEventListener('keydown', handler)
+      for (const ev of events) window.removeEventListener(ev, handler)
     }
   }, [engine, play])
 

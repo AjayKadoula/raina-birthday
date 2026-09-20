@@ -34,8 +34,8 @@ export function SettingsPanel({ stage, unlocked, onReset, onJump }: Props) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Open settings"
-        className="fixed left-3 z-40 flex h-9 w-9 items-center justify-center rounded-full text-ivory/25 transition-colors hover:text-ivory/70"
-        style={{ bottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+        className="fixed left-4 z-40 flex h-10 w-10 items-center justify-center rounded-full text-ivory/25 transition-colors hover:text-ivory/70"
+        style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
       >
         <Settings2 size={15} />
       </button>
