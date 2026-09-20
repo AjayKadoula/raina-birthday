@@ -311,7 +311,7 @@ export const easterEgg: EasterEgg = {
   items: [
     { kind: 'text', title: 'Draft #1 of the letter', body: 'It was four pages. I cut it down. You\'re welcome.' }, // ✎
     { kind: 'photo', title: "The one that didn't make it", src: '/assets/photos/memories/tilak-ceremony.jpg', body: "Look at Papa's face. Look at it." }, // ✎
-    { kind: 'countdown', title: 'Next adventure', date: '2026-12-25', body: 'No details. Keep the weekend free.' }, // ✎
+    // { kind: 'countdown', title: 'Next adventure', date: '2026-12-25', body: 'No details. Keep the weekend free.' }, // ✎ only if you actually plan one
     // { kind: 'audio', title: 'A voice note', src: '/assets/audio/note.mp3' },
     // { kind: 'video', title: 'Behind the scenes', src: '/assets/video/bts.mp4' },
   ],
