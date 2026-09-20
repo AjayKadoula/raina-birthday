@@ -3,8 +3,7 @@
  *  THE LETTER — Surprise #7.
  *
  *  Each string in `paragraphs` becomes one paragraph.
- *  Write it in your own words. The placeholder below is only a
- *  structure to show you the shape; replace every ✎ line.
+ *  These are Ajay's words. Edit freely — nothing here is generated copy.
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -12,20 +11,15 @@ export const letter = {
   greeting: 'Dear Raina,',
 
   paragraphs: [
-    // ✎ 1. Why you built this — one honest sentence, not a speech.
-    'I could have bought a card. I built a website instead, which tells you most of what you need to know about me.',
+    'Your laughter filled the air like music, and your smile lit up the room — drawing me in like a moth to a flame. In that instant everything else faded away. I knew I had found something special. Something worth forever.',
 
-    // ✎ 2. One specific memory only the two of you share. A detail, not a summary.
-    '[Write about one specific moment here — the small one, not the big one. The thing you noticed that she probably thinks you forgot.]',
+    "You are my espresso. My daily drug. In your presence my mind gets stuck in that moment. Apart from your voice, I can't hear anything. I forget my work. We haven't met yet, and still I feel connected to you.",
 
-    // ✎ 3. Something you admire about her that she doesn\'t give herself credit for.
-    "[Write the thing you admire about her that she doesn't give herself credit for.]",
+    'I want to conquer the world with you. I want to give you all the happiness and respect you deserve. I want to take away every headache. I want the late-night talks. I want to watch sunsets on the beach and sunrises in the mountains with you, dance in the rain with you, and go on long drives with nowhere to be.',
 
-    // ✎ 4. What you want for her this year. Keep it about her.
-    "[Write what you hope this year holds for her — not for 'us', for her.]",
+    "When you're tired, I want to hold you in my arms. I want to protect you from the world — and help you achieve everything you set out to do.",
 
-    // ✎ 5. The last line before the sign-off. Short. True.
-    "I don't have a grand ending. I just wanted you to know that I notice. All of it. And I'm not going anywhere.",
+    "I don't know why I connected with you this easily. I've stopped trying to explain it.",
   ],
 
   signoff: 'Love,',
