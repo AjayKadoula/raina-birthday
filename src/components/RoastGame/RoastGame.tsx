@@ -53,6 +53,7 @@ export function RoastGame({ onNext }: Props) {
                     <br />
                     <span className="italic text-gold">{roast.subtitle}</span>
                   </h1>
+                  <p className="mx-auto mt-4 max-w-sm font-sans text-sm text-ivory/55">{roast.intro}</p>
                 </Reveal>
               )}
 

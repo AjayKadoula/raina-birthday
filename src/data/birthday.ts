@@ -180,18 +180,21 @@ export const story = {
 /* ── Surprise 3: the roast ────────────────────────────────────── */
 export const roast = {
   title: "Since it's your birthday...",
-  subtitle: "I'm legally obligated to expose you.",
+  subtitle: 'a short trial. Raina vs Ajay.',
+  intro: "Vote honestly. I've already lost most of these.", // ✎
   questions: [
-    { question: 'Who takes longer to get ready?', ifRaina: "Correct. The evidence is overwhelming.", ifAjay: "Incorrect. We all know the answer.", reaction: photos.reactions.smug }, // ✎
-    { question: "Who says 'I'm not hungry' and then steals food?", ifRaina: "Thank you for admitting it. Growth.", ifAjay: "I'll allow this answer because it's your birthday.", reaction: photos.reactions.guilty }, // ✎
+    { question: "Who says 'I'm not hungry' and then eats half of the other person's plate?", ifRaina: 'Thank you for admitting it. Growth.', ifAjay: "I'll allow this because it's your birthday. (It's you.)", reaction: photos.reactions.guilty }, // ✎
+    { question: "Who says 'five minutes' and means forty-five?", ifRaina: 'Bold, coming from— no. No, that one is me.', ifAjay: "Correct. I'm on my way. Five minutes.", reaction: photos.reactions.smug }, // ✎
     { question: 'Who is more stubborn?', ifRaina: "Wrong. It's me. I will argue this point for hours, which proves it.", ifAjay: "Correct. I'm working on it. (I'm not.)", reaction: photos.reactions.innocent }, // ✎
+    { question: 'Who apologises first?', ifRaina: '...Let us move on.', ifAjay: "Correct. Even when I'm right. Which, see final question.", reaction: photos.reactions.guilty }, // ✎
     { question: 'Who starts arguments and then forgets why?', ifRaina: "Generous. Wrong. It's me, and I've already forgotten what this question was.", ifAjay: 'Correct. What were we talking about?', reaction: photos.reactions.smug }, // ✎
-    { question: 'Who is actually always right?', ifRaina: "I'll allow this because it's your birthday. (It's me. Historically.)", ifAjay: 'Correct. Finally, some recognition. Screenshot this.', reaction: photos.reactions.guilty }, // ✎
+    { question: 'Who is the better cook?', ifRaina: 'Correct. Obviously. I am the better eater. We are a team.', ifAjay: 'Sweet of you. Wrong. Dangerous, even.', reaction: photos.reactions.innocent }, // ✎
+    { question: 'Who is actually always right?', ifRaina: "I'll allow this because it's your birthday. (It's me. Historically.)", ifAjay: 'Correct. Finally, some recognition. Screenshot this.', reaction: photos.reactions.smug }, // ✎
   ] satisfies RoastQuestion[],
   evidence: {
     label: 'Exhibit A',
     photo: photos.reactions.evidence,
-    caption: 'We took ninety photos that day. Ninety. I rest my case.', // ✎  (swap in your funniest photo)
+    caption: 'We took ninety photos that day. Ninety. Neither of us is innocent.', // ✎  (swap in your funniest photo)
   },
   outro: ['Okay, okay.', 'I promise I have something sweet too.'],
   unlocked: 'Surprise #3 unlocked.',
