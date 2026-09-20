@@ -6,19 +6,26 @@ import { Chapter } from '../ui/Chapter'
 import { LineSequence } from '../ui/LineSequence'
 import { Particles } from '../Effects/Particles'
 import { settings } from '../../data/settings'
+import { splitDuration } from '../../utils/date'
 
-type Props = { onBegin: () => void; daysToGo: number | null }
+type Props = { onBegin: () => void; msToGo: number | null }
 
 /** Screen 0 — the hook. Three lines, one rule, one button. */
-export function Intro({ onBegin, daysToGo }: Props) {
+export function Intro({ onBegin, msToGo }: Props) {
   const [showRule, setShowRule] = useState(false)
+  const toGo = msToGo !== null && msToGo > 0 ? splitDuration(msToGo) : null
+  const toGoLabel = toGo
+    ? toGo.days >= 2
+      ? `${toGo.days} days to go`
+      : `${toGo.days * 24 + toGo.hours}h ${String(toGo.minutes).padStart(2, '0')}m to go`
+    : null
 
   return (
     <Chapter tone="charcoal">
       {settings.effects.particles && <Particles kind="stars" density={0.7} />}
-      {daysToGo !== null && daysToGo > 0 && (
+      {toGoLabel && (
         <p className="absolute top-5 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full border border-ivory/10 bg-ink/50 px-3 py-1.5 font-sans text-[0.62rem] uppercase tracking-[0.25em] text-ivory/50 backdrop-blur-md">
-          Preview · {daysToGo} {daysToGo === 1 ? 'day' : 'days'} to go
+          Preview · {toGoLabel}
         </p>
       )}
       <div className="relative z-10 flex w-full max-w-2xl flex-col items-center gap-10 text-center">

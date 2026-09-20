@@ -45,7 +45,12 @@ export function BirthdayExperience() {
     return () => window.clearInterval(t)
   }, [])
   const locked = settings.lockUntilBirthday && !preview && phase === 'before'
-  const daysToGo = Math.ceil(msUntilBirthday() / 86_400_000)
+  // Live "time to go" for the preview chip on the intro (ticks every 30s).
+  const [msToGo, setMsToGo] = useState(() => msUntilBirthday())
+  useEffect(() => {
+    const t = window.setInterval(() => setMsToGo(msUntilBirthday()), 30_000)
+    return () => window.clearInterval(t)
+  }, [])
 
   // Scroll to the top whenever the chapter changes.
   useEffect(() => {
@@ -63,7 +68,7 @@ export function BirthdayExperience() {
           <Countdown key="countdown" />
         ) : (
           <motion.div key={stage} className="min-h-[100svh]">
-            {stage === 'intro' && <Intro onBegin={() => goTo('wish')} daysToGo={phase === 'before' ? daysToGo : null} />}
+            {stage === 'intro' && <Intro onBegin={() => goTo('wish')} msToGo={phase === 'before' ? msToGo : null} />}
             {stage === 'wish' && <BirthdayWish onNext={() => goTo('quiz')} />}
             {stage === 'quiz' && <Quiz onVerified={() => goTo('s1')} />}
             {stage === 's1' && <SurpriseCard onNext={() => unlock(1, 's2')} />}
