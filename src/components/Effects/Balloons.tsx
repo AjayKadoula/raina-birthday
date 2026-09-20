@@ -121,7 +121,7 @@ export function Balloons({ count = settings.balloons.count, className = '', onPo
           style={{
             left: `${b.x}%`,
             animation: reduced ? 'none' : `balloon-rise ${b.duration}s linear ${b.delay}s infinite`,
-            transform: reduced ? 'translateY(-45vh)' : undefined,
+            transform: reduced ? 'translateY(-55vh)' : undefined,
           }}
         >
           <span
@@ -150,7 +150,8 @@ export function Balloons({ count = settings.balloons.count, className = '', onPo
       ))}
 
       <style>{`
-        @keyframes balloon-rise { from { transform: translateY(105vh); opacity: 0 } 5% { opacity: 1 } 96% { opacity: 1 } to { transform: translateY(-30vh); opacity: 0 } }
+        /* Anchored at the bottom edge: start just below it, finish past the top. */
+        @keyframes balloon-rise { from { transform: translateY(20vh); opacity: 0 } 6% { opacity: 1 } 96% { opacity: 1 } to { transform: translateY(-125vh); opacity: 0 } }
         @keyframes balloon-sway { from { transform: translateX(-10px) rotate(-3deg) } to { transform: translateX(10px) rotate(3deg) } }
       `}</style>
 
